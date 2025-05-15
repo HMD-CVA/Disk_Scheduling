@@ -458,6 +458,7 @@
             // 
             // btn_Exit
             // 
+            this.btn_Exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Exit.Location = new System.Drawing.Point(821, 149);
             this.btn_Exit.Name = "btn_Exit";
@@ -469,6 +470,7 @@
             // 
             // btn_Reset
             // 
+            this.btn_Reset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Reset.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Reset.Location = new System.Drawing.Point(143, 149);
             this.btn_Reset.Name = "btn_Reset";
@@ -480,6 +482,7 @@
             // 
             // btn_Start
             // 
+            this.btn_Start.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Start.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Start.Location = new System.Drawing.Point(482, 149);
             this.btn_Start.Name = "btn_Start";

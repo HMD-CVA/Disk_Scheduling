@@ -150,6 +150,23 @@ namespace DIsk_Scheduling
 
             MessageBox.Show($"Clicked at: X = {x}, Y = {y}");
         }
+        void DrawArrowFilled(Graphics g, int x1, int y1, int x2, int y2, float arrowLength, float arrowAngle)
+        {
+            double angle = Math.Atan2(y2 - y1, x2 - x1);
+
+            PointF arrowP1 = new PointF(
+                x2 - arrowLength * (float)Math.Cos(angle - Math.PI / 180 * arrowAngle),
+                y2 - arrowLength * (float)Math.Sin(angle - Math.PI / 180 * arrowAngle)
+            );
+
+            PointF arrowP2 = new PointF(
+                x2 - arrowLength * (float)Math.Cos(angle + Math.PI / 180 * arrowAngle),
+                y2 - arrowLength * (float)Math.Sin(angle + Math.PI / 180 * arrowAngle)
+            );
+
+            PointF[] triangle = new PointF[] { new PointF(x2, y2), arrowP1, arrowP2 };
+            g.FillPolygon(Brushes.Red, triangle);
+        }
 
         private void panel_Graph_Paint(object sender, PaintEventArgs e)
         {
@@ -182,7 +199,11 @@ namespace DIsk_Scheduling
                 int x = marginLR + (int)(percent * timelineLength);
 
                 // Vẽ tick
-                g.DrawLine(Pens.Blue, x, y - 10, x, y + 1000);
+                using (Pen dashedPen = new Pen(Color.Blue, 2f)) // 4f hoặc 5f tùy độ dày bạn muốn
+                {
+                    dashedPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                    g.DrawLine(dashedPen, x, y - 10, x, y + 1000);
+                }
 
                 // Ghi nhãn
                 string label = value.ToString();
@@ -212,24 +233,24 @@ namespace DIsk_Scheduling
                 int total = result.Count;
                 int spacing = 50;
 
-                int currentHead = 50; // hoặc HeadPosition nếu bạn có
+                int currentHead = 50; // hoặc HeadPosition nếu có
 
                 List<int> xPoints = new List<int>();
                 List<int> yPoints = new List<int>();
 
-                // Tổng số điểm là total + 1 vì có thêm currentHead ban đầu
+                // Tính sẵn các điểm (gồm điểm đầu - currentHead)
                 for (int i = 0; i <= total; i++)
                 {
                     int val = (i == 0) ? currentHead : result[i - 1];
                     float percent = (float)(val - minValue) / (maxValue - minValue);
                     int x = marginLR + (int)(percent * timelineLength);
-                    xPoints.Add(x);
-
                     y = yBase + i * spacing;
+
+                    xPoints.Add(x);
                     yPoints.Add(y);
                 }
 
-                // Vẽ các đoạn nối
+                // Vẽ các đoạn nối với mũi tên
                 for (int i = 0; i < total; i++)
                 {
                     int x1 = xPoints[i];
@@ -237,14 +258,18 @@ namespace DIsk_Scheduling
                     int x2 = xPoints[i + 1];
                     int y2 = yPoints[i + 1];
 
-                    g.DrawLine(Pens.Red, x1, y1, x2, y2);
-                    g.FillEllipse(Brushes.Red, x1 - 4, y1 - 4, 8, 8);
-                    g.FillEllipse(Brushes.Red, x2 - 4, y2 - 4, 8, 8);
+                    // Vẽ đoạn nối
+                    using (Pen mainPen = new Pen(Color.Black, 3f))
+                    {
+                        g.DrawLine(mainPen, x1, y1, x2, y2);
+                    }
 
-                    int from = (i == 0) ? currentHead : result[i - 1];
-                    int to = result[i];
+                    // Vẽ đầu tròn
+                    g.FillEllipse(Brushes.Black, x1 - 4, y1 - 4, 8, 8);
+                    g.FillEllipse(Brushes.Black, x2 - 4, y2 - 4, 8, 8);
 
-                    g.DrawString($"{from} → {to}", new Font("Segoe UI", 10), Brushes.DarkGreen, (x1 + x2) / 2, (y1 + y2) / 2 - 20);
+                    // Vẽ mũi tên tại cuối đoạn
+                    DrawArrowFilled(g, x1, y1, x2, y2, 20, 30); // chiều dài & góc mũi tên
                 }
             }
         }
