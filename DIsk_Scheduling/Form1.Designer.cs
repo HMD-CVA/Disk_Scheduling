@@ -41,6 +41,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage_Setting = new System.Windows.Forms.TabPage();
+            this.txt_HeadValue = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Input = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,8 +75,6 @@
             this.panel_Graph = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lb_Time = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage_Setting.SuspendLayout();
@@ -183,7 +183,7 @@
             // 
             // tabPage_Setting
             // 
-            this.tabPage_Setting.Controls.Add(this.textBox1);
+            this.tabPage_Setting.Controls.Add(this.txt_HeadValue);
             this.tabPage_Setting.Controls.Add(this.button1);
             this.tabPage_Setting.Controls.Add(this.label2);
             this.tabPage_Setting.Controls.Add(this.txt_Input);
@@ -203,6 +203,24 @@
             this.tabPage_Setting.TabIndex = 0;
             this.tabPage_Setting.Text = "Setting";
             this.tabPage_Setting.UseVisualStyleBackColor = true;
+            // 
+            // txt_HeadValue
+            // 
+            this.txt_HeadValue.Location = new System.Drawing.Point(169, 53);
+            this.txt_HeadValue.Multiline = true;
+            this.txt_HeadValue.Name = "txt_HeadValue";
+            this.txt_HeadValue.Size = new System.Drawing.Size(626, 57);
+            this.txt_HeadValue.TabIndex = 11;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(10, 53);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(153, 57);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Head Position";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -544,24 +562,6 @@
             this.lb_Time.TabIndex = 3;
             this.lb_Time.Text = "Time";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(10, 53);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 57);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Head Position";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(169, 53);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(626, 57);
-            this.textBox1.TabIndex = 11;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -645,7 +645,7 @@
         private System.Windows.Forms.Label lb_MaxCy;
         private System.Windows.Forms.Label lb_MinCy;
         private System.Windows.Forms.Label lb_Time;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_HeadValue;
         private System.Windows.Forms.Button button1;
     }
 }

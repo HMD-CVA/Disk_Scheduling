@@ -41,12 +41,10 @@ namespace DIsk_Scheduling
 
             groupBox1.MouseClick += panel_Graph_MouseClick;
 
-            HeadPosition = 60;
-
             HeadValue.Minimum = xData.Min(); 
             HeadValue.Maximum = xData.Max();
             HeadPosition = (int)HeadValue.Value;
-            HeadValue.Value = 33;
+            HeadValue.Value = 50;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -57,6 +55,16 @@ namespace DIsk_Scheduling
 
         void UserInput()
         {
+            if (int.TryParse(txt_HeadValue.Text, out int value))
+            {
+                // Đảm bảo giá trị nằm trong khoảng cho phép của HeadValue
+                value = Math.Max((int)HeadValue.Minimum, Math.Min((int)HeadValue.Maximum, value));
+                HeadValue.Value = value;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid integer for the head position!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             try
             {
                 requestQueue = txt_Input.Text.Split(',').Select(s => int.Parse(s.Trim())).ToList();
