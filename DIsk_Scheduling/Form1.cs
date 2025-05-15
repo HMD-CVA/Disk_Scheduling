@@ -53,7 +53,6 @@ namespace DIsk_Scheduling
         {
             lb_Time.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             Invalidate();
-            panel_Graph.Invalidate();
         }
 
         void UserInput()
@@ -94,6 +93,7 @@ namespace DIsk_Scheduling
             {
                 SSTF();
             }
+            panel_Graph.Invalidate();
         }
 
         void resetAll()
@@ -197,39 +197,54 @@ namespace DIsk_Scheduling
             int totalHeight = endY - startY;
             int segmentHeight = totalHeight / n;
 
-            for (int i = 0; i <= n; i++)
-            {
-                int Oy = startY + i * segmentHeight;
-                g.DrawLine(Pens.Gray, 50, Oy, panel_Graph.Width - 50, Oy); // vẽ vạch chia
-                g.DrawString($"Y{i}", new Font("Segoe UI", 10), Brushes.Black, 10, Oy - 10);
-            }
+            //Vẽ Yi
+            //for (int i = 0; i <= n; i++)
+            //{
+            //    int Oy = startY + i * segmentHeight;
+            //    g.DrawLine(Pens.Gray, 50, Oy, panel_Graph.Width, Oy); // vẽ vạch chia
+            //    g.DrawString($"Y{i}", new Font("Segoe UI", 10), Brushes.Black, 10, Oy - 10);
+            //}
 
             // Vẽ đường nối theo thứ tự trong result
             int yBase = marginTB;
             if (result.Count > 0)
             {
                 int total = result.Count;
-                int yStart = yBase + 50;
                 int spacing = 50;
 
-                int currentHead = HeadPosition;
+                int currentHead = 50; // hoặc HeadPosition nếu bạn có
+
+                List<int> xPoints = new List<int>();
+                List<int> yPoints = new List<int>();
+
+                // Tổng số điểm là total + 1 vì có thêm currentHead ban đầu
+                for (int i = 0; i <= total; i++)
+                {
+                    int val = (i == 0) ? currentHead : result[i - 1];
+                    float percent = (float)(val - minValue) / (maxValue - minValue);
+                    int x = marginLR + (int)(percent * timelineLength);
+                    xPoints.Add(x);
+
+                    y = yBase + i * spacing;
+                    yPoints.Add(y);
+                }
+
+                // Vẽ các đoạn nối
                 for (int i = 0; i < total; i++)
                 {
+                    int x1 = xPoints[i];
+                    int y1 = yPoints[i];
+                    int x2 = xPoints[i + 1];
+                    int y2 = yPoints[i + 1];
+
+                    g.DrawLine(Pens.Red, x1, y1, x2, y2);
+                    g.FillEllipse(Brushes.Red, x1 - 4, y1 - 4, 8, 8);
+                    g.FillEllipse(Brushes.Red, x2 - 4, y2 - 4, 8, 8);
+
                     int from = (i == 0) ? currentHead : result[i - 1];
                     int to = result[i];
 
-                    float percentFrom = (float)(from - minValue) / (maxValue - minValue);
-                    float percentTo = (float)(to - minValue) / (maxValue - minValue);
-
-                    int x1 = marginLR + (int)(percentFrom * timelineLength);
-                    int x2 = marginLR + (int)(percentTo * timelineLength);
-                    y = yStart + i * spacing;
-
-                    g.DrawLine(Pens.Red, x1, y, x2, y);
-                    g.FillEllipse(Brushes.Red, x1 - 4, y - 4, 8, 8);
-                    g.FillEllipse(Brushes.Red, x2 - 4, y - 4, 8, 8);
-
-                    g.DrawString($"{from} → {to}", new Font("Segoe UI", 10), Brushes.DarkGreen, (x1 + x2) / 2, y - 20);
+                    g.DrawString($"{from} → {to}", new Font("Segoe UI", 10), Brushes.DarkGreen, (x1 + x2) / 2, (y1 + y2) / 2 - 20);
                 }
             }
         }
