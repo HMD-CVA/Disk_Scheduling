@@ -30,12 +30,15 @@ namespace DIsk_Scheduling
 
         private Timer timer = new Timer();
 
+        private int currentStep = 0;
+        private bool isAnimating = false;
+
         public Form1()
         {
             InitializeComponent();
             this.Size = new Size(Win_Width, Win_Height);
 
-            timer.Interval = 1;
+            timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             timer.Start();
 
@@ -52,7 +55,15 @@ namespace DIsk_Scheduling
         private void Timer_Tick(object sender, EventArgs e)
         {
             lb_Time.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            Invalidate();
+            if (isAnimating && result.Count > 0)
+            {
+                currentStep++;
+                if (currentStep >= result.Count)
+                {
+                    isAnimating = false; // hoàn tất animation
+                }
+                panel_Graph.Invalidate(); // vẽ lại
+            }
         }
 
         void UserInput()
@@ -93,6 +104,8 @@ namespace DIsk_Scheduling
             {
                 SSTF();
             }
+            currentStep = 0;
+            isAnimating = true; // bắt đầu animation
             panel_Graph.Invalidate();
         }
 
@@ -251,25 +264,45 @@ namespace DIsk_Scheduling
                 }
 
                 // Vẽ các đoạn nối với mũi tên
-                for (int i = 0; i < total; i++)
+                //for (int i = 0; i < total; i++)
+                //{
+                //    int x1 = xPoints[i];
+                //    int y1 = yPoints[i];
+                //    int x2 = xPoints[i + 1];
+                //    int y2 = yPoints[i + 1];
+
+                //    // Vẽ đoạn nối
+                //    using (Pen mainPen = new Pen(Color.Black, 3f))
+                //    {
+                //        g.DrawLine(mainPen, x1, y1, x2, y2);
+                //    }
+
+                //    // Vẽ đầu tròn
+                //    g.FillEllipse(Brushes.Black, x1 - 4, y1 - 4, 8, 8);
+                //    g.FillEllipse(Brushes.Black, x2 - 4, y2 - 4, 8, 8);
+
+                //    // Vẽ mũi tên tại cuối đoạn
+                //    DrawArrowFilled(g, x1, y1, x2, y2, 20, 30); // chiều dài & góc mũi tên
+                //}
+
+                int drawUntil = isAnimating ? Math.Min(currentStep, result.Count) : result.Count;
+
+                for (int i = 0; i < drawUntil; i++)
                 {
                     int x1 = xPoints[i];
                     int y1 = yPoints[i];
                     int x2 = xPoints[i + 1];
                     int y2 = yPoints[i + 1];
 
-                    // Vẽ đoạn nối
                     using (Pen mainPen = new Pen(Color.Black, 3f))
                     {
                         g.DrawLine(mainPen, x1, y1, x2, y2);
                     }
 
-                    // Vẽ đầu tròn
                     g.FillEllipse(Brushes.Black, x1 - 4, y1 - 4, 8, 8);
                     g.FillEllipse(Brushes.Black, x2 - 4, y2 - 4, 8, 8);
 
-                    // Vẽ mũi tên tại cuối đoạn
-                    DrawArrowFilled(g, x1, y1, x2, y2, 20, 30); // chiều dài & góc mũi tên
+                    DrawArrowFilled(g, x1, y1, x2, y2, 20, 30);
                 }
             }
         }
