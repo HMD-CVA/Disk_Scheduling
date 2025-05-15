@@ -22,7 +22,7 @@ namespace DIsk_Scheduling
         private List<int> xData = new List<int> { 0, 14, 37, 53, 65, 67, 98, 122, 124, 183 };
         private List<int> requestQueue = new List<int>();
         private List<int> result = new List<int>();
-
+        private List<int> paintQueue = new List<int>();
 
         Random random = new Random();
         private int randomA = 10;
@@ -44,13 +44,16 @@ namespace DIsk_Scheduling
             HeadValue.Minimum = xData.Min(); 
             HeadValue.Maximum = xData.Max();
             HeadPosition = (int)HeadValue.Value;
-            HeadValue.Value = 50;
+            HeadValue.Value = 0; // Need to change !!!!!!!!!!!!!
+
+            paintQueue = xData;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             lb_Time.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             Invalidate();
+            panel_Graph.Invalidate();
         }
 
         void UserInput()
@@ -91,7 +94,6 @@ namespace DIsk_Scheduling
             {
                 SSTF();
             }
-            panel_Graph.Invalidate();
         }
 
         void resetAll()
@@ -105,6 +107,7 @@ namespace DIsk_Scheduling
 
             txt_Input.Clear();
             txt_SeekCnt.Clear();
+            txt_HeadValue.Clear();
             requestQueue.Clear();
         }
         private void btn_Reset_Click(object sender, EventArgs e)
@@ -135,6 +138,7 @@ namespace DIsk_Scheduling
 
         private void button1_Click(object sender, EventArgs e)
         {
+            txt_HeadValue.Text = string.Empty;
             txt_Input.Text = string.Empty;
         }
 
@@ -149,6 +153,11 @@ namespace DIsk_Scheduling
 
         private void panel_Graph_Paint(object sender, PaintEventArgs e)
         {
+            if (paintQueue.Count <= 0)
+            {
+                return;
+            }
+
             Graphics g = e.Graphics;
             Pen pen = new Pen(Color.Black, 2);
 
@@ -159,15 +168,15 @@ namespace DIsk_Scheduling
             int marginTB = 20; // lề trên và dưới
             int timelineLength = panelWidth - 2 * marginLR;
 
-            int minValue = xData.Min();
-            int maxValue = xData.Max();
+            int minValue = paintQueue.Min();
+            int maxValue = paintQueue.Max();
 
             // Vẽ trục timeline
             int y = marginTB;
             g.DrawLine(pen, marginLR, y, panelWidth - marginLR, y);
 
             // Vẽ từng mốc trên timeline
-            foreach (int value in xData)
+            foreach (int value in paintQueue)
             {
                 float percent = (float)(value - minValue) / (maxValue - minValue); // giá trị tương đối
                 int x = marginLR + (int)(percent * timelineLength);
@@ -182,7 +191,7 @@ namespace DIsk_Scheduling
                 g.DrawString(label, font, Brushes.Black, x - size.Width / 2, y - 25);
             }
 
-            int n = xData.Count;
+            int n = paintQueue.Count;
             int startY = marginTB;
             int endY = panel_Graph.Height - 50;
             int totalHeight = endY - startY;
@@ -230,6 +239,7 @@ namespace DIsk_Scheduling
             var lists = xData.ToList();
             var tmp = xData.ToList();
             result = lists;
+            paintQueue = xData;
         }
         void SSTF()
         {
