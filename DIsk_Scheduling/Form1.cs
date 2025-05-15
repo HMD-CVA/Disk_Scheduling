@@ -261,17 +261,17 @@ namespace DIsk_Scheduling
             MessageBox.Show(s, "TB", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
             panel_Graph.Invalidate();
-            
-            //var lists = xData.ToList();
-            //lists.Remove(data);
-            //xData = lists.ToArray(); // Nếu cần mảng trở lại
 
-            //s = string.Empty;
-            //foreach (int value in xData)
-            //{
-            //    s += value.ToString() + " ";
-            //}
-            //MessageBox.Show(s, "TB", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var lists = xData.ToList();
+            lists.Remove(data);
+            xData = lists.ToArray(); // Nếu cần mảng trở lại
+
+            s = string.Empty;
+            foreach (int value in xData)
+            {
+                s += value.ToString() + " ";
+            }
+            MessageBox.Show(s, "TB", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
