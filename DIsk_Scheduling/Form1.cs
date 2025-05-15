@@ -17,7 +17,7 @@ namespace DIsk_Scheduling
     {
         private int Win_Width = 2000;
         private int Win_Height = 1200;
-        private int HeadPosition = 0;
+        private int HeadPosition; // TEST
 
         private List<int> xData = new List<int> { 0, 14, 37, 53, 65, 67, 98, 122, 124, 183 };
         private List<int> requestQueue = new List<int>();
@@ -42,23 +42,20 @@ namespace DIsk_Scheduling
             timer.Tick += Timer_Tick;
             timer.Start();
 
-            groupBox1.MouseClick += panel_Graph_MouseClick;
 
             HeadValue.Minimum = xData.Min(); 
             HeadValue.Maximum = xData.Max();
-            HeadPosition = (int)HeadValue.Value;
-            HeadValue.Value = 0; // Need to change !!!!!!!!!!!!!
-
-            paintQueue = xData;
+            //HeadPosition = 50;
+            //HeadValue.Value = 50; // Need to change !!!!!!!!!!!!!
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             lb_Time.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            if (isAnimating && result.Count > 0)
+            if (isAnimating && paintQueue.Count > 0)
             {
                 currentStep++;
-                if (currentStep >= result.Count)
+                if (currentStep >= paintQueue.Count)
                 {
                     isAnimating = false; // hoàn tất animation
                 }
@@ -71,8 +68,9 @@ namespace DIsk_Scheduling
             if (int.TryParse(txt_HeadValue.Text, out int value))
             {
                 // Đảm bảo giá trị nằm trong khoảng cho phép của HeadValue
-                value = Math.Max((int)HeadValue.Minimum, Math.Min((int)HeadValue.Maximum, value));
+                //value = Math.Max((int)HeadValue.Minimum, Math.Min((int)HeadValue.Maximum, value));
                 HeadValue.Value = value;
+                HeadPosition = value;
             }
             else
             {
@@ -80,7 +78,7 @@ namespace DIsk_Scheduling
             }
             try
             {
-                requestQueue = txt_Input.Text.Split(',').Select(s => int.Parse(s.Trim())).ToList();
+                xData = txt_Input.Text.Split(',').Select(s => int.Parse(s.Trim())).ToList();
             }
             catch
             {
@@ -95,6 +93,11 @@ namespace DIsk_Scheduling
             foreach (int i in requestQueue)
             {
                 txt_SeekCnt.Text += i.ToString() + " ";
+            }
+            if (!btn_FCFS.Checked && !btn_SSTF.Checked && !btn_Scan.Checked && !btn_cscan.Checked && !btn_clook.Checked)
+            {
+                MessageBox.Show("Please select type to start", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             if (btn_FCFS.Checked)
             {
@@ -137,14 +140,20 @@ namespace DIsk_Scheduling
         {
             requestQueue.Clear();
             string s = string.Empty;
-            int n = random.Next(randomA, randomB); n = 10;
+            string h = string.Empty;
+            int n = random.Next(randomA, randomB); n = 10; // Changes !!!!!!!!!!!!
+            int rnd = 0;
             for (int i = 0; i < n; i++)
             {
-                int rnd = random.Next(randomA, randomB);
+                rnd = random.Next(randomA, randomB);
                 requestQueue.Add(rnd);
                 s += rnd.ToString();
-                if (i < n-1) s += ", ";
+                if (i < n - 1) s += ", ";
             }
+            rnd = random.Next(requestQueue.Min(), requestQueue.Max());
+            h += rnd.ToString();
+            txt_HeadValue.Clear();
+            txt_HeadValue.Text = h;
             txt_Input.Clear();
             txt_Input.Text = s;
         }
@@ -191,6 +200,9 @@ namespace DIsk_Scheduling
             Graphics g = e.Graphics;
             Pen pen = new Pen(Color.Black, 2);
 
+            var list = xData.ToList();
+            list.Add(HeadPosition);
+            list.Sort();
             // Tính toán khoảng cách
             int panelWidth = panel_Graph.Width;
             int panelHeight = panel_Graph.Height;
@@ -198,31 +210,32 @@ namespace DIsk_Scheduling
             int marginTB = 20; // lề trên và dưới
             int timelineLength = panelWidth - 2 * marginLR;
 
-            int minValue = paintQueue.Min();
-            int maxValue = paintQueue.Max();
-
+            int minValue = list.Min();
+            int maxValue = list.Max();
+            
             // Vẽ trục timeline
             int y = marginTB;
             g.DrawLine(pen, marginLR, y, panelWidth - marginLR, y);
 
             // Vẽ từng mốc trên timeline
-            foreach (int value in paintQueue)
+            foreach (int value in list)
             {
                 float percent = (float)(value - minValue) / (maxValue - minValue); // giá trị tương đối
                 int x = marginLR + (int)(percent * timelineLength);
-
-                // Vẽ tick
-                using (Pen dashedPen = new Pen(Color.Blue, 2f)) // 4f hoặc 5f tùy độ dày bạn muốn
-                {
-                    dashedPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-                    g.DrawLine(dashedPen, x, y - 10, x, y + 1000);
-                }
 
                 // Ghi nhãn
                 string label = value.ToString();
                 Font font = new Font("Segoe UI", 10);
                 SizeF size = g.MeasureString(label, font);
                 g.DrawString(label, font, Brushes.Black, x - size.Width / 2, y - 25);
+
+                
+                // Vẽ tick
+                using (Pen dashedPen = new Pen(Color.Blue, 2f)) // 4f hoặc 5f tùy độ dày bạn muốn
+                {
+                    dashedPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                    g.DrawLine(dashedPen, x, y - 10, x, y + 10000);
+                }
             }
 
             int n = paintQueue.Count;
@@ -241,12 +254,16 @@ namespace DIsk_Scheduling
 
             // Vẽ đường nối theo thứ tự trong result
             int yBase = marginTB;
-            if (result.Count > 0)
+            if (paintQueue.Count > 0)
             {
-                int total = result.Count;
-                int spacing = 50;
+                int total = paintQueue.Count;
+                int marginTop = marginTB;
+                int marginBottom = 10;
+                int availableHeight = panel_Graph.Height - marginTop - marginBottom;
+                int totalPoints = 1 + paintQueue.Count;
+                int spacing = availableHeight / Math.Max(totalPoints - 1, 1);
 
-                int currentHead = 50; // hoặc HeadPosition nếu có
+                int currentHead = HeadPosition; // hoặc HeadPosition nếu có
 
                 List<int> xPoints = new List<int>();
                 List<int> yPoints = new List<int>();
@@ -254,38 +271,16 @@ namespace DIsk_Scheduling
                 // Tính sẵn các điểm (gồm điểm đầu - currentHead)
                 for (int i = 0; i <= total; i++)
                 {
-                    int val = (i == 0) ? currentHead : result[i - 1];
+                    int val = (i == 0) ? currentHead : paintQueue[i - 1];
                     float percent = (float)(val - minValue) / (maxValue - minValue);
                     int x = marginLR + (int)(percent * timelineLength);
-                    y = yBase + i * spacing;
+                    y = marginTop + i * spacing;
 
                     xPoints.Add(x);
                     yPoints.Add(y);
                 }
 
-                // Vẽ các đoạn nối với mũi tên
-                //for (int i = 0; i < total; i++)
-                //{
-                //    int x1 = xPoints[i];
-                //    int y1 = yPoints[i];
-                //    int x2 = xPoints[i + 1];
-                //    int y2 = yPoints[i + 1];
-
-                //    // Vẽ đoạn nối
-                //    using (Pen mainPen = new Pen(Color.Black, 3f))
-                //    {
-                //        g.DrawLine(mainPen, x1, y1, x2, y2);
-                //    }
-
-                //    // Vẽ đầu tròn
-                //    g.FillEllipse(Brushes.Black, x1 - 4, y1 - 4, 8, 8);
-                //    g.FillEllipse(Brushes.Black, x2 - 4, y2 - 4, 8, 8);
-
-                //    // Vẽ mũi tên tại cuối đoạn
-                //    DrawArrowFilled(g, x1, y1, x2, y2, 20, 30); // chiều dài & góc mũi tên
-                //}
-
-                int drawUntil = isAnimating ? Math.Min(currentStep, result.Count) : result.Count;
+                int drawUntil = isAnimating ? Math.Min(currentStep, paintQueue.Count) : paintQueue.Count;
 
                 for (int i = 0; i < drawUntil; i++)
                 {
@@ -305,64 +300,52 @@ namespace DIsk_Scheduling
                     DrawArrowFilled(g, x1, y1, x2, y2, 20, 30);
                 }
             }
+
         }
         void FCFS()
         {
             int res = HeadPosition;
-            var lists = xData.ToList();
-            var tmp = xData.ToList();
-            result = lists;
+            result = xData;
             paintQueue = xData;
         }
         void SSTF()
         {
-            int res = HeadPosition;
+            result.Clear();
+            string s = string.Empty;
+            s += HeadPosition.ToString() + " ";
+            int removeE = HeadPosition;
             var lists = xData.ToList();
-            var tmp = xData.ToList();
+            //result.Add(HeadPosition);
             while (lists.Count > 0) 
             {
-                int removeE = int.MaxValue;
+                int tmp = 0;
+                int sum = int.MaxValue;
                 foreach (int i in lists)
                 {
-                    if (removeE < Math.Abs(res - i))
+                    if (sum > Math.Abs(removeE - i))
                     {
-                        removeE = Math.Abs(res - i);
-                        res = i;
+                        sum = Math.Abs(removeE - i);
+                        tmp = i;
                     }
                 }
-                result.Add(res);
-                lists.Remove(res);
+                s+= tmp.ToString() + " ";
+                removeE = tmp;
+                result.Add(tmp);
+                lists.Remove(removeE);
             }
+            
+            txt_SeekCnt.Text = s;
+            paintQueue = result;
         }
         private void HeadValue_ValueChanged(object sender, EventArgs e)
         {
             int data = (int)HeadValue.Value;
-            if (!xData.Contains(data))
-            {
-                xData.Add(data);
-                panel_Graph.Invalidate();
-            }
-            //xData.Remove(data);
-
-            //string s = string.Empty;
-            //foreach (int value in xData)
-            //{
-            //    s += value.ToString() + " ";  
-            //}
-            //MessageBox.Show(s, "TB", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HeadPosition = data;
+            txt_HeadValue.Text = data.ToString();
+            currentStep = 0;
+            isAnimating = true; // bắt đầu animation
+            panel_Graph.Invalidate();
             
-            
-
-            //var lists = xData.ToList();
-            //lists.Remove(data);
-            //xData = lists.ToArray(); // Nếu cần mảng trở lại
-
-            //s = string.Empty;
-            //foreach (int value in xData)
-            //{
-            //    s += value.ToString() + " ";
-            //}
-            //MessageBox.Show(s, "TB", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

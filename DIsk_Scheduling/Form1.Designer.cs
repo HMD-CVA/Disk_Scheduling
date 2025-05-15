@@ -532,6 +532,7 @@
             // 
             // panel_Graph
             // 
+            this.panel_Graph.AutoScroll = true;
             this.panel_Graph.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Graph.Location = new System.Drawing.Point(10, 38);
             this.panel_Graph.Margin = new System.Windows.Forms.Padding(0);
