@@ -19,10 +19,10 @@ namespace DIsk_Scheduling
         private int Win_Height = 1200;
         private int HeadPosition = 0;
 
+        private List<int> xData = new List<int> { 0, 14, 37, 53, 65, 67, 98, 122, 124, 183 };
         private List<int> requestQueue = new List<int>();
         private List<int> result = new List<int>();
 
-        private int[] xData = { 0, 14, 37, 53, 65, 67, 98, 122, 124, 183 };
 
         Random random = new Random();
         private int randomA = 10;
@@ -46,7 +46,7 @@ namespace DIsk_Scheduling
             HeadValue.Minimum = xData.Min(); 
             HeadValue.Maximum = xData.Max();
             HeadPosition = (int)HeadValue.Value;
-            HeadValue.Value = HeadPosition;
+            HeadValue.Value = 33;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -174,7 +174,7 @@ namespace DIsk_Scheduling
                 g.DrawString(label, font, Brushes.Black, x - size.Width / 2, y - 25);
             }
 
-            int n = xData.Length;
+            int n = xData.Count;
             int startY = marginTB;
             int endY = panel_Graph.Height - 50;
             int totalHeight = endY - startY;
@@ -248,19 +248,19 @@ namespace DIsk_Scheduling
             int data = (int)HeadValue.Value;
             if (!xData.Contains(data))
             {
-                var list = xData.ToList();
-                list.Add(data);
-                xData = list.ToArray(); // Nếu cần mảng trở lại
+                xData.Add(data);
+                panel_Graph.Invalidate();
             }
+            //xData.Remove(data);
 
-            string s = string.Empty;
-            foreach (int value in xData)
-            {
-                s += value.ToString() + " ";  
-            }
-            MessageBox.Show(s, "TB", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //string s = string.Empty;
+            //foreach (int value in xData)
+            //{
+            //    s += value.ToString() + " ";  
+            //}
+            //MessageBox.Show(s, "TB", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
-            panel_Graph.Invalidate();
+            
 
             //var lists = xData.ToList();
             //lists.Remove(data);
