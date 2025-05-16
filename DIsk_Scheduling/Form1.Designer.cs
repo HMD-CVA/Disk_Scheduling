@@ -72,9 +72,13 @@
             this.txt_SeekCnt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel_Setting = new System.Windows.Forms.Panel();
+            this.btnTowardSmaller = new System.Windows.Forms.RadioButton();
+            this.btnTowardLarger = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel_Graph = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lb_Time = new System.Windows.Forms.Label();
+            this.btn_look = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage_Setting.SuspendLayout();
@@ -100,7 +104,7 @@
             this.menuStrip1.MdiWindowListItem = this.editToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ShowItemToolTips = true;
-            this.menuStrip1.Size = new System.Drawing.Size(1984, 35);
+            this.menuStrip1.Size = new System.Drawing.Size(1434, 35);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -173,12 +177,11 @@
             this.TabControl.Controls.Add(this.tabPage_Setting);
             this.TabControl.Controls.Add(this.tabPage_Control);
             this.TabControl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(818, 366);
+            this.TabControl.Size = new System.Drawing.Size(652, 366);
             this.TabControl.TabIndex = 1;
             // 
             // tabPage_Setting
@@ -190,6 +193,7 @@
             this.tabPage_Setting.Controls.Add(this.label1);
             this.tabPage_Setting.Controls.Add(this.btn_Clear);
             this.tabPage_Setting.Controls.Add(this.btn_FillRandom);
+            this.tabPage_Setting.Controls.Add(this.btn_look);
             this.tabPage_Setting.Controls.Add(this.btn_clook);
             this.tabPage_Setting.Controls.Add(this.btn_cscan);
             this.tabPage_Setting.Controls.Add(this.btn_Scan);
@@ -199,7 +203,7 @@
             this.tabPage_Setting.Location = new System.Drawing.Point(4, 33);
             this.tabPage_Setting.Name = "tabPage_Setting";
             this.tabPage_Setting.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Setting.Size = new System.Drawing.Size(810, 329);
+            this.tabPage_Setting.Size = new System.Drawing.Size(644, 329);
             this.tabPage_Setting.TabIndex = 0;
             this.tabPage_Setting.Text = "Setting";
             this.tabPage_Setting.UseVisualStyleBackColor = true;
@@ -209,7 +213,7 @@
             this.txt_HeadValue.Location = new System.Drawing.Point(169, 53);
             this.txt_HeadValue.Multiline = true;
             this.txt_HeadValue.Name = "txt_HeadValue";
-            this.txt_HeadValue.Size = new System.Drawing.Size(626, 57);
+            this.txt_HeadValue.Size = new System.Drawing.Size(443, 57);
             this.txt_HeadValue.TabIndex = 11;
             // 
             // button1
@@ -226,7 +230,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(249, 259);
+            this.label2.Location = new System.Drawing.Point(165, 259);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(428, 24);
             this.label2.TabIndex = 5;
@@ -237,7 +241,7 @@
             this.txt_Input.Location = new System.Drawing.Point(169, 126);
             this.txt_Input.Multiline = true;
             this.txt_Input.Name = "txt_Input";
-            this.txt_Input.Size = new System.Drawing.Size(626, 130);
+            this.txt_Input.Size = new System.Drawing.Size(443, 130);
             this.txt_Input.TabIndex = 3;
             // 
             // label1
@@ -275,57 +279,62 @@
             // btn_clook
             // 
             this.btn_clook.AutoSize = true;
-            this.btn_clook.Location = new System.Drawing.Point(655, 294);
+            this.btn_clook.Location = new System.Drawing.Point(506, 294);
             this.btn_clook.Name = "btn_clook";
             this.btn_clook.Size = new System.Drawing.Size(108, 28);
             this.btn_clook.TabIndex = 9;
             this.btn_clook.TabStop = true;
             this.btn_clook.Text = "C-LOOK";
             this.btn_clook.UseVisualStyleBackColor = true;
+            this.btn_clook.CheckedChanged += new System.EventHandler(this.btn_clook_CheckedChanged);
             // 
             // btn_cscan
             // 
             this.btn_cscan.AutoSize = true;
-            this.btn_cscan.Location = new System.Drawing.Point(486, 294);
+            this.btn_cscan.Location = new System.Drawing.Point(307, 295);
             this.btn_cscan.Name = "btn_cscan";
             this.btn_cscan.Size = new System.Drawing.Size(106, 28);
             this.btn_cscan.TabIndex = 8;
             this.btn_cscan.TabStop = true;
             this.btn_cscan.Text = "C-SCAN";
             this.btn_cscan.UseVisualStyleBackColor = true;
+            this.btn_cscan.CheckedChanged += new System.EventHandler(this.btn_cscan_CheckedChanged);
             // 
             // btn_Scan
             // 
             this.btn_Scan.AutoSize = true;
-            this.btn_Scan.Location = new System.Drawing.Point(339, 294);
+            this.btn_Scan.Location = new System.Drawing.Point(203, 295);
             this.btn_Scan.Name = "btn_Scan";
             this.btn_Scan.Size = new System.Drawing.Size(84, 28);
             this.btn_Scan.TabIndex = 7;
             this.btn_Scan.TabStop = true;
             this.btn_Scan.Text = "SCAN";
             this.btn_Scan.UseVisualStyleBackColor = true;
+            this.btn_Scan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
             // 
             // btn_SSTF
             // 
             this.btn_SSTF.AutoSize = true;
-            this.btn_SSTF.Location = new System.Drawing.Point(195, 294);
+            this.btn_SSTF.Location = new System.Drawing.Point(105, 295);
             this.btn_SSTF.Name = "btn_SSTF";
             this.btn_SSTF.Size = new System.Drawing.Size(81, 28);
             this.btn_SSTF.TabIndex = 6;
             this.btn_SSTF.TabStop = true;
             this.btn_SSTF.Text = "SSTF";
             this.btn_SSTF.UseVisualStyleBackColor = true;
+            this.btn_SSTF.CheckedChanged += new System.EventHandler(this.btn_SSTF_CheckedChanged);
             // 
             // btn_FCFS
             // 
             this.btn_FCFS.AutoSize = true;
-            this.btn_FCFS.Location = new System.Drawing.Point(49, 294);
+            this.btn_FCFS.Location = new System.Drawing.Point(16, 294);
             this.btn_FCFS.Name = "btn_FCFS";
             this.btn_FCFS.Size = new System.Drawing.Size(83, 28);
             this.btn_FCFS.TabIndex = 4;
             this.btn_FCFS.TabStop = true;
             this.btn_FCFS.Text = "FCFS";
             this.btn_FCFS.UseVisualStyleBackColor = true;
+            this.btn_FCFS.CheckedChanged += new System.EventHandler(this.btn_FCFS_CheckedChanged);
             // 
             // tabPage_Control
             // 
@@ -340,7 +349,7 @@
             this.tabPage_Control.Location = new System.Drawing.Point(4, 33);
             this.tabPage_Control.Name = "tabPage_Control";
             this.tabPage_Control.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Control.Size = new System.Drawing.Size(810, 329);
+            this.tabPage_Control.Size = new System.Drawing.Size(644, 329);
             this.tabPage_Control.TabIndex = 1;
             this.tabPage_Control.Text = "Control";
             this.tabPage_Control.UseVisualStyleBackColor = true;
@@ -426,17 +435,16 @@
             this.panel1.Location = new System.Drawing.Point(0, 35);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(10, 20, 10, 0);
-            this.panel1.Size = new System.Drawing.Size(1984, 388);
+            this.panel1.Size = new System.Drawing.Size(1434, 453);
             this.panel1.TabIndex = 2;
             // 
             // panel_Report
             // 
             this.panel_Report.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Report.Controls.Add(this.groupBox2);
-            this.panel_Report.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel_Report.Location = new System.Drawing.Point(834, 20);
+            this.panel_Report.Location = new System.Drawing.Point(687, 20);
             this.panel_Report.Name = "panel_Report";
-            this.panel_Report.Size = new System.Drawing.Size(1140, 368);
+            this.panel_Report.Size = new System.Drawing.Size(738, 368);
             this.panel_Report.TabIndex = 3;
             // 
             // groupBox2
@@ -447,11 +455,10 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txt_SeekCnt);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Location = new System.Drawing.Point(3, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1138, 366);
+            this.groupBox2.Size = new System.Drawing.Size(720, 367);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "REPORT";
@@ -460,7 +467,7 @@
             // 
             this.btn_Exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Exit.Location = new System.Drawing.Point(821, 149);
+            this.btn_Exit.Location = new System.Drawing.Point(495, 138);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(176, 67);
             this.btn_Exit.TabIndex = 5;
@@ -472,7 +479,7 @@
             // 
             this.btn_Reset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Reset.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Reset.Location = new System.Drawing.Point(143, 149);
+            this.btn_Reset.Location = new System.Drawing.Point(43, 138);
             this.btn_Reset.Name = "btn_Reset";
             this.btn_Reset.Size = new System.Drawing.Size(176, 67);
             this.btn_Reset.TabIndex = 4;
@@ -484,7 +491,7 @@
             // 
             this.btn_Start.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Start.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Start.Location = new System.Drawing.Point(482, 149);
+            this.btn_Start.Location = new System.Drawing.Point(283, 138);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(176, 67);
             this.btn_Start.TabIndex = 3;
@@ -495,10 +502,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(72, 40);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(19, 33);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(997, 54);
+            this.label4.Size = new System.Drawing.Size(678, 37);
             this.label4.TabIndex = 2;
             this.label4.Text = "ALGORITHM ILLUSTRATION FOR DISK SCHEDULING";
             // 
@@ -507,7 +514,7 @@
             this.txt_SeekCnt.Location = new System.Drawing.Point(158, 294);
             this.txt_SeekCnt.Name = "txt_SeekCnt";
             this.txt_SeekCnt.ReadOnly = true;
-            this.txt_SeekCnt.Size = new System.Drawing.Size(970, 35);
+            this.txt_SeekCnt.Size = new System.Drawing.Size(540, 35);
             this.txt_SeekCnt.TabIndex = 1;
             // 
             // label3
@@ -523,34 +530,69 @@
             // panel_Setting
             // 
             this.panel_Setting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_Setting.Controls.Add(this.btnTowardSmaller);
+            this.panel_Setting.Controls.Add(this.btnTowardLarger);
+            this.panel_Setting.Controls.Add(this.label8);
             this.panel_Setting.Controls.Add(this.TabControl);
             this.panel_Setting.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel_Setting.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel_Setting.Location = new System.Drawing.Point(10, 20);
             this.panel_Setting.Name = "panel_Setting";
-            this.panel_Setting.Size = new System.Drawing.Size(820, 368);
+            this.panel_Setting.Size = new System.Drawing.Size(671, 433);
             this.panel_Setting.TabIndex = 2;
+            // 
+            // btnTowardSmaller
+            // 
+            this.btnTowardSmaller.AutoSize = true;
+            this.btnTowardSmaller.Location = new System.Drawing.Point(173, 378);
+            this.btnTowardSmaller.Name = "btnTowardSmaller";
+            this.btnTowardSmaller.Size = new System.Drawing.Size(155, 29);
+            this.btnTowardSmaller.TabIndex = 3;
+            this.btnTowardSmaller.TabStop = true;
+            this.btnTowardSmaller.Text = "Smaller track";
+            this.btnTowardSmaller.UseVisualStyleBackColor = true;
+            // 
+            // btnTowardLarger
+            // 
+            this.btnTowardLarger.AutoSize = true;
+            this.btnTowardLarger.Location = new System.Drawing.Point(353, 378);
+            this.btnTowardLarger.Name = "btnTowardLarger";
+            this.btnTowardLarger.Size = new System.Drawing.Size(145, 29);
+            this.btnTowardLarger.TabIndex = 3;
+            this.btnTowardLarger.TabStop = true;
+            this.btnTowardLarger.Text = "Larger track";
+            this.btnTowardLarger.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(53, 382);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 25);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Toward";
             // 
             // panel_Graph
             // 
             this.panel_Graph.AutoScroll = true;
-            this.panel_Graph.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Graph.Location = new System.Drawing.Point(10, 38);
+            this.panel_Graph.Location = new System.Drawing.Point(15, 38);
             this.panel_Graph.Margin = new System.Windows.Forms.Padding(0);
             this.panel_Graph.Name = "panel_Graph";
-            this.panel_Graph.Size = new System.Drawing.Size(1964, 672);
+            this.panel_Graph.Size = new System.Drawing.Size(1396, 500);
             this.panel_Graph.TabIndex = 3;
             this.panel_Graph.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Graph_Paint);
             this.panel_Graph.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Graph_MouseClick);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lb_Time);
             this.groupBox1.Controls.Add(this.panel_Graph);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 441);
+            this.groupBox1.Location = new System.Drawing.Point(0, 494);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox1.Size = new System.Drawing.Size(1984, 720);
+            this.groupBox1.Size = new System.Drawing.Size(1434, 567);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "GRAPH";
@@ -558,22 +600,32 @@
             // lb_Time
             // 
             this.lb_Time.AutoSize = true;
-            this.lb_Time.Dock = System.Windows.Forms.DockStyle.Right;
             this.lb_Time.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Time.Location = new System.Drawing.Point(1923, 423);
+            this.lb_Time.Location = new System.Drawing.Point(1315, -2);
             this.lb_Time.Name = "lb_Time";
             this.lb_Time.Size = new System.Drawing.Size(61, 30);
             this.lb_Time.TabIndex = 3;
             this.lb_Time.Text = "Time";
+            // 
+            // btn_look
+            // 
+            this.btn_look.AutoSize = true;
+            this.btn_look.Location = new System.Drawing.Point(419, 294);
+            this.btn_look.Name = "btn_look";
+            this.btn_look.Size = new System.Drawing.Size(86, 28);
+            this.btn_look.TabIndex = 9;
+            this.btn_look.TabStop = true;
+            this.btn_look.Text = "LOOK";
+            this.btn_look.UseVisualStyleBackColor = true;
+            this.btn_look.CheckedChanged += new System.EventHandler(this.btn_clook_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1984, 1161);
+            this.ClientSize = new System.Drawing.Size(1434, 1061);
             this.ControlBox = false;
-            this.Controls.Add(this.lb_Time);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -583,6 +635,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simulator Disk Scheduling";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.TabControl.ResumeLayout(false);
@@ -598,7 +651,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel_Setting.ResumeLayout(false);
+            this.panel_Setting.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -652,6 +707,10 @@
         private System.Windows.Forms.Label lb_Time;
         private System.Windows.Forms.TextBox txt_HeadValue;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton btnTowardSmaller;
+        private System.Windows.Forms.RadioButton btnTowardLarger;
+        private System.Windows.Forms.RadioButton btn_look;
     }
 }
 

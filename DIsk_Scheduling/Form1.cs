@@ -19,7 +19,7 @@ namespace DIsk_Scheduling
         private int Win_Height = 1200;
         private int HeadPosition; // TEST
 
-        private List<int> xData = new List<int> { 0, 14, 37, 53, 65, 67, 98, 122, 124, 183 };
+        private List<int> xData = new List<int> { 0, 14, 37, 53, 65, 67, 98, 122, 124, 183 };   // track requests
         private List<int> requestQueue = new List<int>();
         private List<int> result = new List<int>();
         private List<int> paintQueue = new List<int>();
@@ -32,6 +32,8 @@ namespace DIsk_Scheduling
 
         private int currentStep = 0;
         private bool isAnimating = false;
+
+        private const int maxTrack = 199;
 
         public Form1()
         {
@@ -90,27 +92,48 @@ namespace DIsk_Scheduling
         {
             txt_SeekCnt.Clear();
             if (txt_Input.Text != string.Empty) UserInput();
+
             foreach (int i in requestQueue)
             {
                 txt_SeekCnt.Text += i.ToString() + " ";
             }
-            if (!btn_FCFS.Checked && !btn_SSTF.Checked && !btn_Scan.Checked && !btn_cscan.Checked && !btn_clook.Checked)
+
+            int type = -1;
+            string toward = "";
+
+            if (btn_FCFS.Checked) FCFS();
+            else if (btn_SSTF.Checked) SSTF();
+            else if (btn_Scan.Checked) type = 1;
+            else if (btn_cscan.Checked) type = 2;
+            else if (btn_look.Checked) type = 3;
+            else if (btn_clook.Checked) type = 4;
+            else
             {
                 MessageBox.Show("Please select type to start", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (btn_FCFS.Checked)
+
+            if (type != -1)
             {
-                FCFS();
+                if (btnTowardLarger.Checked) toward = "Larger";
+                else if (btnTowardSmaller.Checked) toward = "Smaller";
+                else
+                {
+                    MessageBox.Show("Please select toward to start", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
             }
-            if (btn_SSTF.Checked)
-            {
-                SSTF();
-            }
+
+            if (type == 1) SCAN(toward);
+            else if (type == 2) CSCAN(toward);
+            else if (type == 3) LOOK(toward);
+            else CLOOK(toward);
+
             currentStep = 0;
             isAnimating = true; // bắt đầu animation
             panel_Graph.Invalidate();
         }
+
 
         void resetAll()
         {
@@ -304,6 +327,7 @@ namespace DIsk_Scheduling
         }
         void FCFS()
         {
+            result.Clear();
             int res = HeadPosition;
             result = xData;
             paintQueue = xData;
@@ -337,6 +361,125 @@ namespace DIsk_Scheduling
             txt_SeekCnt.Text = s;
             paintQueue = result;
         }
+
+        private void splitXData(ref List<int> left, ref List<int> right, string toward)
+        {
+            foreach (int i in xData)
+            {
+                if (i == HeadPosition)
+                {
+                    if (toward == "Larger") right.Add(i);
+                    else left.Add(i);
+                }
+                else if (i < HeadPosition) left.Add(i);
+                else right.Add(i);
+            }
+        }
+      
+        private void SCAN(string toward)
+        {
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            splitXData(ref left, ref right, toward);
+            
+
+            if(toward == "Larger" && !right.Contains(maxTrack))
+            {
+                right.Add(maxTrack);
+                xData.Add(maxTrack);
+            }
+            else if (toward == "Smaller" && !left.Contains(0))
+            {
+                left.Add(0);
+                xData.Add(0);
+            }
+
+            right.Sort();
+            left.Sort((a,b) => b.CompareTo(a));
+
+            if(toward == "Larger") result = right.Concat(left).ToList();
+            else result = left.Concat(right).ToList();
+
+            paintQueue = result;
+        }
+
+        private void CSCAN(string toward)
+        {
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            splitXData(ref left, ref right, toward);
+
+            if (!right.Contains(maxTrack))
+            {
+                right.Add(maxTrack);
+                xData.Add(maxTrack);
+            }
+
+            if (!left.Contains(0))
+            {
+                left.Add(0);
+                xData.Add(0);
+            }
+
+            if (toward == "Larger")
+            {
+                right.Sort();
+                left.Sort();
+                result = right.Concat(left).ToList();
+            }
+            else
+            {
+                Comparison<int> com = (a, b) => b.CompareTo(a);
+                right.Sort(com);
+                left.Sort(com);
+                result = left.Concat(right).ToList();
+            }
+
+            paintQueue = result;
+        }
+
+        private void LOOK(string toward)
+        {
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            splitXData(ref left, ref right, toward);
+
+            right.Sort();
+            left.Sort((a, b) => b.CompareTo(a));
+
+            if (toward == "Larger") result = right.Concat(left).ToList();
+            else result = left.Concat(right).ToList();
+
+            paintQueue = result;
+        }
+
+        private void CLOOK(string toward)
+        {
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            splitXData(ref left, ref right, toward);
+
+            if (toward == "Larger")
+            {
+                right.Sort();
+                left.Sort();
+                result = right.Concat(left).ToList();
+            }
+            else
+            {
+                Comparison<int> com = (a, b) => b.CompareTo(a);
+                right.Sort(com);
+                left.Sort(com);
+                result = left.Concat(right).ToList();
+            }
+
+            paintQueue = result;
+        }
+
         private void HeadValue_ValueChanged(object sender, EventArgs e)
         {
             int data = (int)HeadValue.Value;
@@ -346,6 +489,42 @@ namespace DIsk_Scheduling
             isAnimating = true; // bắt đầu animation
             panel_Graph.Invalidate();
             
+        }
+
+        private void btn_FCFS_CheckedChanged(object sender, EventArgs e)
+        {
+            btnTowardLarger.Enabled = false;
+            btnTowardSmaller.Enabled = false;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btnTowardLarger.Enabled = false;
+            btnTowardSmaller.Enabled = false;
+        }
+
+        private void btn_SSTF_CheckedChanged(object sender, EventArgs e)
+        {
+            btnTowardLarger.Enabled = false;
+            btnTowardSmaller.Enabled = false;
+        }
+
+        private void btn_Scan_CheckedChanged(object sender, EventArgs e)
+        {
+            btnTowardLarger.Enabled = true;
+            btnTowardSmaller.Enabled = true;
+        }
+
+        private void btn_cscan_CheckedChanged(object sender, EventArgs e)
+        {
+            btnTowardLarger.Enabled = true;
+            btnTowardSmaller.Enabled = true;
+        }
+
+        private void btn_clook_CheckedChanged(object sender, EventArgs e)
+        {
+            btnTowardLarger.Enabled = true;
+            btnTowardSmaller.Enabled = true;
         }
     }
 }
