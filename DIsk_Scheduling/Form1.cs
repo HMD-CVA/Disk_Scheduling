@@ -20,7 +20,7 @@ namespace DIsk_Scheduling
         private int HeadPosition; // TEST
         private int maxTrack = 199;
 
-        private List<int> xData = new List<int> { 0, 14, 37, 53, 65, 67, 98, 122, 124, 183 };
+        private List<int> xData = new List<int> ();
         private List<int> requestQueue = new List<int>();
         private List<int> result = new List<int>();
         private List<int> paintQueue = new List<int>();
@@ -41,13 +41,19 @@ namespace DIsk_Scheduling
             btn_ToLeft.Enabled = false;
             btn_ToRight.Enabled = false;
 
+            trackBar_Minimum.Minimum = 0;
+            trackBar_Maximum.Maximum = maxTrack;
+            trackBar_Minimum.Maximum = maxTrack;
+            trackBar_Maximum.Minimum = 0;
+            
+
             timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             timer.Start();
 
 
-            HeadValue.Minimum = xData.Min(); 
-            HeadValue.Maximum = xData.Max();
+            HeadValue.Minimum = 0; 
+            HeadValue.Maximum = maxTrack;
             //HeadPosition = 50;
             //HeadValue.Value = 50; // Need to change !!!!!!!!!!!!!
         }
@@ -145,7 +151,10 @@ namespace DIsk_Scheduling
             txt_Input.Clear();
             txt_SeekCnt.Clear();
             txt_HeadValue.Clear();
-            requestQueue.Clear();
+            paintQueue.Clear();
+            result.Clear();
+
+            panel_Graph.Invalidate();
         }
         private void btn_Reset_Click(object sender, EventArgs e)
         {
@@ -165,19 +174,37 @@ namespace DIsk_Scheduling
             string h = string.Empty;
             int n = random.Next(randomA, randomB); n = 10; // Changes !!!!!!!!!!!!
             int rnd = 0;
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i <= n; i++)
             {
+                if (i == n)
+                {
+                    randomA = requestQueue.Min();
+                    randomB = requestQueue.Max();
+                }
+                bool ok = true;
                 do
                 {
+                    ok = true;
                     rnd = random.Next(randomA, randomB);
+                    foreach (int j in requestQueue)
+                    {
+                        if (Math.Abs(j - rnd) < 4 || j == rnd)
+                        {
+                            ok = false;
+                            break;
+                        }
+                    }
                 } 
-                while(requestQueue.Contains(rnd));
-                
+                while(!ok);
+                if (i == n) 
+                {
+                    break;
+                }
                 requestQueue.Add(rnd);
                 s += rnd.ToString();
                 if (i < n - 1) s += ", ";
             }
-            rnd = random.Next(requestQueue.Min(), requestQueue.Max());
+            HeadValue.Value = rnd;
             h += rnd.ToString();
             txt_HeadValue.Clear();
             txt_HeadValue.Text = h;
@@ -235,7 +262,7 @@ namespace DIsk_Scheduling
             int panelWidth = panel_Graph.Width;
             int panelHeight = panel_Graph.Height;
             int marginLR = 50; // lề trái và phải
-            int marginTB = 20; // lề trên và dưới
+            int marginTB = 25; // lề trên và dưới
             int timelineLength = panelWidth - 2 * marginLR;
 
             int minValue = list.Min();
@@ -253,7 +280,7 @@ namespace DIsk_Scheduling
 
                 // Ghi nhãn
                 string label = value.ToString();
-                Font font = new Font("Segoe UI", 10);
+                Font font = new Font("Segoe UI", 10, FontStyle.Bold);
                 SizeF size = g.MeasureString(label, font);
                 g.DrawString(label, font, Brushes.Black, x - size.Width / 2, y - 25);
 
@@ -271,14 +298,6 @@ namespace DIsk_Scheduling
             int endY = panel_Graph.Height - 50;
             int totalHeight = endY - startY;
             int segmentHeight = totalHeight / n;
-
-            //Vẽ Yi
-            //for (int i = 0; i <= n; i++)
-            //{
-            //    int Oy = startY + i * segmentHeight;
-            //    g.DrawLine(Pens.Gray, 50, Oy, panel_Graph.Width, Oy); // vẽ vạch chia
-            //    g.DrawString($"Y{i}", new Font("Segoe UI", 10), Brushes.Black, 10, Oy - 10);
-            //}
 
             // Vẽ đường nối theo thứ tự trong result
             int yBase = marginTB;
@@ -322,8 +341,9 @@ namespace DIsk_Scheduling
                         g.DrawLine(mainPen, x1, y1, x2, y2);
                     }
 
-                    g.FillEllipse(Brushes.Black, x1 - 4, y1 - 4, 8, 8);
-                    g.FillEllipse(Brushes.Black, x2 - 4, y2 - 4, 8, 8);
+                    int radius = 16; // Hinh tron to nho (R)
+                    g.FillEllipse(Brushes.DarkGray, x1 - radius / 2, y1 - radius / 2, radius, radius);
+                    g.FillEllipse(Brushes.DarkGray, x2 - radius / 2, y2 - radius / 2, radius, radius);
 
                     DrawArrowFilled(g, x1, y1, x2, y2, 20, 30);
                 }
@@ -616,6 +636,34 @@ namespace DIsk_Scheduling
                 btn_ToLeft.Enabled = false;
                 btn_ToRight.Enabled = false;
             }
+        }
+
+        private void trackBar_Minimum_Scroll(object sender, EventArgs e)
+        {
+            // Nếu Minimum >= Maximum thì chỉnh lại cho hợp lệ
+            if  (trackBar_Maximum.Value == 0)
+            {
+                trackBar_Minimum.Value = 0;
+            }
+            else if (trackBar_Minimum.Value >= trackBar_Maximum.Value)
+            {
+                trackBar_Minimum.Value = trackBar_Maximum.Value - 1 ;
+            }
+
+            // Cập nhật label hiển thị
+            lb_MinCy.Text = $"Min: {trackBar_Minimum.Value}";
+        }
+
+        private void trackBar_Maximum_Scroll(object sender, EventArgs e)
+        {
+            // Nếu Maximum <= Minimum thì chỉnh lại cho hợp lệ
+            if (trackBar_Maximum.Value <= trackBar_Minimum.Value)
+            {
+                trackBar_Maximum.Value = trackBar_Minimum.Value + 1;
+            }
+
+            // Cập nhật label hiển thị
+            lb_MaxCy.Text = $"Max: {trackBar_Maximum.Value}";
         }
     }
 }

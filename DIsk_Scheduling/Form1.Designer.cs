@@ -57,8 +57,8 @@
             this.tabPage_Control = new System.Windows.Forms.TabPage();
             this.lb_MaxCy = new System.Windows.Forms.Label();
             this.lb_MinCy = new System.Windows.Forms.Label();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBar_Maximum = new System.Windows.Forms.TrackBar();
+            this.trackBar_Minimum = new System.Windows.Forms.TrackBar();
             this.HeadValue = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -82,8 +82,8 @@
             this.TabControl.SuspendLayout();
             this.tabPage_Setting.SuspendLayout();
             this.tabPage_Control.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Maximum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Minimum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadValue)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel_Report.SuspendLayout();
@@ -352,8 +352,8 @@
             // 
             this.tabPage_Control.Controls.Add(this.lb_MaxCy);
             this.tabPage_Control.Controls.Add(this.lb_MinCy);
-            this.tabPage_Control.Controls.Add(this.trackBar2);
-            this.tabPage_Control.Controls.Add(this.trackBar1);
+            this.tabPage_Control.Controls.Add(this.trackBar_Maximum);
+            this.tabPage_Control.Controls.Add(this.trackBar_Minimum);
             this.tabPage_Control.Controls.Add(this.HeadValue);
             this.tabPage_Control.Controls.Add(this.label7);
             this.tabPage_Control.Controls.Add(this.label6);
@@ -386,19 +386,21 @@
             this.lb_MinCy.TabIndex = 6;
             this.lb_MinCy.Text = "0";
             // 
-            // trackBar2
+            // trackBar_Maximum
             // 
-            this.trackBar2.Location = new System.Drawing.Point(427, 194);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(343, 45);
-            this.trackBar2.TabIndex = 5;
+            this.trackBar_Maximum.Location = new System.Drawing.Point(427, 194);
+            this.trackBar_Maximum.Name = "trackBar_Maximum";
+            this.trackBar_Maximum.Size = new System.Drawing.Size(343, 45);
+            this.trackBar_Maximum.TabIndex = 5;
+            this.trackBar_Maximum.Scroll += new System.EventHandler(this.trackBar_Maximum_Scroll);
             // 
-            // trackBar1
+            // trackBar_Minimum
             // 
-            this.trackBar1.Location = new System.Drawing.Point(33, 194);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(343, 45);
-            this.trackBar1.TabIndex = 4;
+            this.trackBar_Minimum.Location = new System.Drawing.Point(33, 194);
+            this.trackBar_Minimum.Name = "trackBar_Minimum";
+            this.trackBar_Minimum.Size = new System.Drawing.Size(343, 45);
+            this.trackBar_Minimum.TabIndex = 4;
+            this.trackBar_Minimum.Scroll += new System.EventHandler(this.trackBar_Minimum_Scroll);
             // 
             // HeadValue
             // 
@@ -584,7 +586,7 @@
             this.panel_Graph.Location = new System.Drawing.Point(10, 38);
             this.panel_Graph.Margin = new System.Windows.Forms.Padding(0);
             this.panel_Graph.Name = "panel_Graph";
-            this.panel_Graph.Size = new System.Drawing.Size(1964, 672);
+            this.panel_Graph.Size = new System.Drawing.Size(1964, 690);
             this.panel_Graph.TabIndex = 3;
             this.panel_Graph.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Graph_Paint);
             this.panel_Graph.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Graph_MouseClick);
@@ -594,10 +596,10 @@
             this.groupBox1.Controls.Add(this.panel_Graph);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 441);
+            this.groupBox1.Location = new System.Drawing.Point(0, 423);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox1.Size = new System.Drawing.Size(1984, 720);
+            this.groupBox1.Size = new System.Drawing.Size(1984, 738);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "GRAPH";
@@ -637,8 +639,8 @@
             this.tabPage_Setting.PerformLayout();
             this.tabPage_Control.ResumeLayout(false);
             this.tabPage_Control.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Maximum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Minimum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadValue)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel_Report.ResumeLayout(false);
@@ -690,10 +692,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBar_Minimum;
         private System.Windows.Forms.NumericUpDown HeadValue;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TrackBar trackBar_Maximum;
         private System.Windows.Forms.Label lb_MaxCy;
         private System.Windows.Forms.Label lb_MinCy;
         private System.Windows.Forms.Label lb_Time;
