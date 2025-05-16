@@ -41,6 +41,12 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage_Setting = new System.Windows.Forms.TabPage();
+            this.btn_Look = new System.Windows.Forms.RadioButton();
+            this.btn_clook = new System.Windows.Forms.RadioButton();
+            this.btn_cscan = new System.Windows.Forms.RadioButton();
+            this.btn_Scan = new System.Windows.Forms.RadioButton();
+            this.btn_SSTF = new System.Windows.Forms.RadioButton();
+            this.btn_FCFS = new System.Windows.Forms.RadioButton();
             this.txt_HeadValue = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,11 +54,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_FillRandom = new System.Windows.Forms.Button();
-            this.btn_clook = new System.Windows.Forms.RadioButton();
-            this.btn_cscan = new System.Windows.Forms.RadioButton();
-            this.btn_Scan = new System.Windows.Forms.RadioButton();
-            this.btn_SSTF = new System.Windows.Forms.RadioButton();
-            this.btn_FCFS = new System.Windows.Forms.RadioButton();
             this.tabPage_Control = new System.Windows.Forms.TabPage();
             this.lb_MaxCy = new System.Windows.Forms.Label();
             this.lb_MinCy = new System.Windows.Forms.Label();
@@ -65,6 +66,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_Report = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_ToRight = new System.Windows.Forms.RadioButton();
+            this.btn_ToLeft = new System.Windows.Forms.RadioButton();
             this.btn_Exit = new System.Windows.Forms.Button();
             this.btn_Reset = new System.Windows.Forms.Button();
             this.btn_Start = new System.Windows.Forms.Button();
@@ -75,9 +78,6 @@
             this.panel_Graph = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lb_Time = new System.Windows.Forms.Label();
-            this.btn_Look = new System.Windows.Forms.RadioButton();
-            this.btn_ToLeft = new System.Windows.Forms.RadioButton();
-            this.btn_ToRight = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage_Setting.SuspendLayout();
@@ -103,7 +103,7 @@
             this.menuStrip1.MdiWindowListItem = this.editToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ShowItemToolTips = true;
-            this.menuStrip1.Size = new System.Drawing.Size(1984, 35);
+            this.menuStrip1.Size = new System.Drawing.Size(1592, 35);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -123,25 +123,25 @@
             // homeToolStripMenuItem
             // 
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(147, 32);
             this.homeToolStripMenuItem.Text = "Home";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(147, 32);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(147, 32);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(147, 32);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -176,7 +176,6 @@
             this.TabControl.Controls.Add(this.tabPage_Setting);
             this.TabControl.Controls.Add(this.tabPage_Control);
             this.TabControl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
@@ -186,9 +185,9 @@
             // 
             // tabPage_Setting
             // 
+            this.tabPage_Setting.Controls.Add(this.btn_cscan);
             this.tabPage_Setting.Controls.Add(this.btn_Look);
             this.tabPage_Setting.Controls.Add(this.btn_clook);
-            this.tabPage_Setting.Controls.Add(this.btn_cscan);
             this.tabPage_Setting.Controls.Add(this.btn_Scan);
             this.tabPage_Setting.Controls.Add(this.btn_SSTF);
             this.tabPage_Setting.Controls.Add(this.btn_FCFS);
@@ -207,6 +206,76 @@
             this.tabPage_Setting.TabIndex = 0;
             this.tabPage_Setting.Text = "Setting";
             this.tabPage_Setting.UseVisualStyleBackColor = true;
+            // 
+            // btn_Look
+            // 
+            this.btn_Look.AutoSize = true;
+            this.btn_Look.Location = new System.Drawing.Point(397, 295);
+            this.btn_Look.Name = "btn_Look";
+            this.btn_Look.Size = new System.Drawing.Size(86, 28);
+            this.btn_Look.TabIndex = 12;
+            this.btn_Look.TabStop = true;
+            this.btn_Look.Text = "LOOK";
+            this.btn_Look.UseVisualStyleBackColor = true;
+            this.btn_Look.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
+            // 
+            // btn_clook
+            // 
+            this.btn_clook.AutoSize = true;
+            this.btn_clook.Location = new System.Drawing.Point(673, 295);
+            this.btn_clook.Name = "btn_clook";
+            this.btn_clook.Size = new System.Drawing.Size(108, 28);
+            this.btn_clook.TabIndex = 9;
+            this.btn_clook.TabStop = true;
+            this.btn_clook.Text = "C-LOOK";
+            this.btn_clook.UseVisualStyleBackColor = true;
+            this.btn_clook.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
+            // 
+            // btn_cscan
+            // 
+            this.btn_cscan.AutoSize = true;
+            this.btn_cscan.Location = new System.Drawing.Point(519, 295);
+            this.btn_cscan.Name = "btn_cscan";
+            this.btn_cscan.Size = new System.Drawing.Size(106, 28);
+            this.btn_cscan.TabIndex = 8;
+            this.btn_cscan.TabStop = true;
+            this.btn_cscan.Text = "C-SCAN";
+            this.btn_cscan.UseVisualStyleBackColor = true;
+            this.btn_cscan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
+            // 
+            // btn_Scan
+            // 
+            this.btn_Scan.AutoSize = true;
+            this.btn_Scan.Location = new System.Drawing.Point(271, 295);
+            this.btn_Scan.Name = "btn_Scan";
+            this.btn_Scan.Size = new System.Drawing.Size(84, 28);
+            this.btn_Scan.TabIndex = 7;
+            this.btn_Scan.TabStop = true;
+            this.btn_Scan.Text = "SCAN";
+            this.btn_Scan.UseVisualStyleBackColor = true;
+            this.btn_Scan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
+            // 
+            // btn_SSTF
+            // 
+            this.btn_SSTF.AutoSize = true;
+            this.btn_SSTF.Location = new System.Drawing.Point(142, 295);
+            this.btn_SSTF.Name = "btn_SSTF";
+            this.btn_SSTF.Size = new System.Drawing.Size(81, 28);
+            this.btn_SSTF.TabIndex = 6;
+            this.btn_SSTF.TabStop = true;
+            this.btn_SSTF.Text = "SSTF";
+            this.btn_SSTF.UseVisualStyleBackColor = true;
+            // 
+            // btn_FCFS
+            // 
+            this.btn_FCFS.AutoSize = true;
+            this.btn_FCFS.Location = new System.Drawing.Point(11, 295);
+            this.btn_FCFS.Name = "btn_FCFS";
+            this.btn_FCFS.Size = new System.Drawing.Size(83, 28);
+            this.btn_FCFS.TabIndex = 4;
+            this.btn_FCFS.TabStop = true;
+            this.btn_FCFS.Text = "FCFS";
+            this.btn_FCFS.UseVisualStyleBackColor = true;
             // 
             // txt_HeadValue
             // 
@@ -277,64 +346,6 @@
             this.btn_FillRandom.Text = "Fill Random";
             this.btn_FillRandom.UseVisualStyleBackColor = true;
             this.btn_FillRandom.Click += new System.EventHandler(this.btn_FillRandom_Click);
-            // 
-            // btn_clook
-            // 
-            this.btn_clook.AutoSize = true;
-            this.btn_clook.Location = new System.Drawing.Point(557, 295);
-            this.btn_clook.Name = "btn_clook";
-            this.btn_clook.Size = new System.Drawing.Size(108, 28);
-            this.btn_clook.TabIndex = 9;
-            this.btn_clook.TabStop = true;
-            this.btn_clook.Text = "C-LOOK";
-            this.btn_clook.UseVisualStyleBackColor = true;
-            this.btn_clook.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
-            // 
-            // btn_cscan
-            // 
-            this.btn_cscan.AutoSize = true;
-            this.btn_cscan.Location = new System.Drawing.Point(403, 295);
-            this.btn_cscan.Name = "btn_cscan";
-            this.btn_cscan.Size = new System.Drawing.Size(106, 28);
-            this.btn_cscan.TabIndex = 8;
-            this.btn_cscan.TabStop = true;
-            this.btn_cscan.Text = "C-SCAN";
-            this.btn_cscan.UseVisualStyleBackColor = true;
-            this.btn_cscan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
-            // 
-            // btn_Scan
-            // 
-            this.btn_Scan.AutoSize = true;
-            this.btn_Scan.Location = new System.Drawing.Point(271, 295);
-            this.btn_Scan.Name = "btn_Scan";
-            this.btn_Scan.Size = new System.Drawing.Size(84, 28);
-            this.btn_Scan.TabIndex = 7;
-            this.btn_Scan.TabStop = true;
-            this.btn_Scan.Text = "SCAN";
-            this.btn_Scan.UseVisualStyleBackColor = true;
-            this.btn_Scan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
-            // 
-            // btn_SSTF
-            // 
-            this.btn_SSTF.AutoSize = true;
-            this.btn_SSTF.Location = new System.Drawing.Point(142, 295);
-            this.btn_SSTF.Name = "btn_SSTF";
-            this.btn_SSTF.Size = new System.Drawing.Size(81, 28);
-            this.btn_SSTF.TabIndex = 6;
-            this.btn_SSTF.TabStop = true;
-            this.btn_SSTF.Text = "SSTF";
-            this.btn_SSTF.UseVisualStyleBackColor = true;
-            // 
-            // btn_FCFS
-            // 
-            this.btn_FCFS.AutoSize = true;
-            this.btn_FCFS.Location = new System.Drawing.Point(11, 295);
-            this.btn_FCFS.Name = "btn_FCFS";
-            this.btn_FCFS.Size = new System.Drawing.Size(83, 28);
-            this.btn_FCFS.TabIndex = 4;
-            this.btn_FCFS.TabStop = true;
-            this.btn_FCFS.Text = "FCFS";
-            this.btn_FCFS.UseVisualStyleBackColor = true;
             // 
             // tabPage_Control
             // 
@@ -435,17 +446,16 @@
             this.panel1.Location = new System.Drawing.Point(0, 35);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(10, 20, 10, 0);
-            this.panel1.Size = new System.Drawing.Size(1984, 388);
+            this.panel1.Size = new System.Drawing.Size(1592, 388);
             this.panel1.TabIndex = 2;
             // 
             // panel_Report
             // 
             this.panel_Report.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Report.Controls.Add(this.groupBox2);
-            this.panel_Report.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel_Report.Location = new System.Drawing.Point(834, 20);
             this.panel_Report.Name = "panel_Report";
-            this.panel_Report.Size = new System.Drawing.Size(1140, 368);
+            this.panel_Report.Size = new System.Drawing.Size(772, 363);
             this.panel_Report.TabIndex = 3;
             // 
             // groupBox2
@@ -458,20 +468,43 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txt_SeekCnt);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1138, 366);
+            this.groupBox2.Size = new System.Drawing.Size(759, 356);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "REPORT";
+            // 
+            // btn_ToRight
+            // 
+            this.btn_ToRight.AutoSize = true;
+            this.btn_ToRight.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ToRight.Location = new System.Drawing.Point(314, 292);
+            this.btn_ToRight.Name = "btn_ToRight";
+            this.btn_ToRight.Size = new System.Drawing.Size(220, 34);
+            this.btn_ToRight.TabIndex = 7;
+            this.btn_ToRight.TabStop = true;
+            this.btn_ToRight.Text = "Right Head Position";
+            this.btn_ToRight.UseVisualStyleBackColor = true;
+            // 
+            // btn_ToLeft
+            // 
+            this.btn_ToLeft.AutoSize = true;
+            this.btn_ToLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ToLeft.Location = new System.Drawing.Point(37, 292);
+            this.btn_ToLeft.Name = "btn_ToLeft";
+            this.btn_ToLeft.Size = new System.Drawing.Size(205, 34);
+            this.btn_ToLeft.TabIndex = 6;
+            this.btn_ToLeft.TabStop = true;
+            this.btn_ToLeft.Text = "Left Head Position";
+            this.btn_ToLeft.UseVisualStyleBackColor = true;
             // 
             // btn_Exit
             // 
             this.btn_Exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Exit.Location = new System.Drawing.Point(821, 149);
+            this.btn_Exit.Location = new System.Drawing.Point(484, 99);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(176, 67);
             this.btn_Exit.TabIndex = 5;
@@ -483,7 +516,7 @@
             // 
             this.btn_Reset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Reset.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Reset.Location = new System.Drawing.Point(143, 149);
+            this.btn_Reset.Location = new System.Drawing.Point(48, 99);
             this.btn_Reset.Name = "btn_Reset";
             this.btn_Reset.Size = new System.Drawing.Size(176, 67);
             this.btn_Reset.TabIndex = 4;
@@ -495,7 +528,7 @@
             // 
             this.btn_Start.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Start.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Start.Location = new System.Drawing.Point(482, 149);
+            this.btn_Start.Location = new System.Drawing.Point(258, 99);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(176, 67);
             this.btn_Start.TabIndex = 3;
@@ -506,26 +539,26 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(72, 40);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(41, 33);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(997, 54);
+            this.label4.Size = new System.Drawing.Size(678, 37);
             this.label4.TabIndex = 2;
             this.label4.Text = "ALGORITHM ILLUSTRATION FOR DISK SCHEDULING";
             // 
             // txt_SeekCnt
             // 
-            this.txt_SeekCnt.Location = new System.Drawing.Point(178, 258);
+            this.txt_SeekCnt.Location = new System.Drawing.Point(187, 194);
             this.txt_SeekCnt.Name = "txt_SeekCnt";
             this.txt_SeekCnt.ReadOnly = true;
-            this.txt_SeekCnt.Size = new System.Drawing.Size(950, 35);
+            this.txt_SeekCnt.Size = new System.Drawing.Size(473, 35);
             this.txt_SeekCnt.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 260);
+            this.label3.Location = new System.Drawing.Point(15, 197);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(166, 32);
             this.label3.TabIndex = 0;
@@ -544,24 +577,23 @@
             // panel_Graph
             // 
             this.panel_Graph.AutoScroll = true;
-            this.panel_Graph.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Graph.Location = new System.Drawing.Point(10, 38);
             this.panel_Graph.Margin = new System.Windows.Forms.Padding(0);
             this.panel_Graph.Name = "panel_Graph";
-            this.panel_Graph.Size = new System.Drawing.Size(1964, 672);
+            this.panel_Graph.Size = new System.Drawing.Size(1564, 584);
             this.panel_Graph.TabIndex = 3;
             this.panel_Graph.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Graph_Paint);
             this.panel_Graph.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Graph_MouseClick);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lb_Time);
             this.groupBox1.Controls.Add(this.panel_Graph);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 441);
+            this.groupBox1.Location = new System.Drawing.Point(0, 429);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox1.Size = new System.Drawing.Size(1984, 720);
+            this.groupBox1.Size = new System.Drawing.Size(1584, 632);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "GRAPH";
@@ -569,58 +601,20 @@
             // lb_Time
             // 
             this.lb_Time.AutoSize = true;
-            this.lb_Time.Dock = System.Windows.Forms.DockStyle.Right;
             this.lb_Time.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Time.Location = new System.Drawing.Point(1923, 423);
+            this.lb_Time.Location = new System.Drawing.Point(1381, 0);
             this.lb_Time.Name = "lb_Time";
             this.lb_Time.Size = new System.Drawing.Size(61, 30);
             this.lb_Time.TabIndex = 3;
             this.lb_Time.Text = "Time";
-            // 
-            // btn_Look
-            // 
-            this.btn_Look.AutoSize = true;
-            this.btn_Look.Location = new System.Drawing.Point(713, 295);
-            this.btn_Look.Name = "btn_Look";
-            this.btn_Look.Size = new System.Drawing.Size(86, 28);
-            this.btn_Look.TabIndex = 12;
-            this.btn_Look.TabStop = true;
-            this.btn_Look.Text = "LOOK";
-            this.btn_Look.UseVisualStyleBackColor = true;
-            this.btn_Look.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
-            // 
-            // btn_ToLeft
-            // 
-            this.btn_ToLeft.AutoSize = true;
-            this.btn_ToLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ToLeft.Location = new System.Drawing.Point(229, 311);
-            this.btn_ToLeft.Name = "btn_ToLeft";
-            this.btn_ToLeft.Size = new System.Drawing.Size(205, 34);
-            this.btn_ToLeft.TabIndex = 6;
-            this.btn_ToLeft.TabStop = true;
-            this.btn_ToLeft.Text = "Left Head Position";
-            this.btn_ToLeft.UseVisualStyleBackColor = true;
-            // 
-            // btn_ToRight
-            // 
-            this.btn_ToRight.AutoSize = true;
-            this.btn_ToRight.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ToRight.Location = new System.Drawing.Point(690, 311);
-            this.btn_ToRight.Name = "btn_ToRight";
-            this.btn_ToRight.Size = new System.Drawing.Size(220, 34);
-            this.btn_ToRight.TabIndex = 7;
-            this.btn_ToRight.TabStop = true;
-            this.btn_ToRight.Text = "Right Head Position";
-            this.btn_ToRight.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1984, 1161);
+            this.ClientSize = new System.Drawing.Size(1592, 1061);
             this.ControlBox = false;
-            this.Controls.Add(this.lb_Time);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -646,6 +640,7 @@
             this.groupBox2.PerformLayout();
             this.panel_Setting.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
