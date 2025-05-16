@@ -18,6 +18,7 @@ namespace DIsk_Scheduling
         private int Win_Width = 2000;
         private int Win_Height = 1200;
         private int HeadPosition; // TEST
+        private int maxTrack = 199;
 
         private List<int> xData = new List<int> { 0, 14, 37, 53, 65, 67, 98, 122, 124, 183 };
         private List<int> requestQueue = new List<int>();
@@ -106,6 +107,10 @@ namespace DIsk_Scheduling
             if (btn_SSTF.Checked)
             {
                 SSTF();
+            }
+            if (btn_Scan.Checked)
+            {
+                SCAN();
             }
             currentStep = 0;
             isAnimating = true; // bắt đầu animation
@@ -337,6 +342,15 @@ namespace DIsk_Scheduling
             txt_SeekCnt.Text = s;
             paintQueue = result;
         }
+        void SCAN()
+        {
+            if (HeadPosition > maxTrack || xData.Max() > maxTrack)
+            {
+                MessageBox.Show("?????", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+        }
         private void HeadValue_ValueChanged(object sender, EventArgs e)
         {
             int data = (int)HeadValue.Value;
@@ -350,17 +364,7 @@ namespace DIsk_Scheduling
 
         private void txt_HeadValue_TextChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(txt_HeadValue.Text, out int value))
-            {
-                // Gán giá trị vào HeadValue và HeadPosition nếu hợp lệ
-                value = Math.Max((int)HeadValue.Minimum, Math.Min((int)HeadValue.Maximum, value));
-                HeadValue.Value = value;
-                HeadPosition = value;
-            }
-            else
-            {
-                MessageBox.Show("Please enter a valid integer for the head position!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+
         }
     }
 }

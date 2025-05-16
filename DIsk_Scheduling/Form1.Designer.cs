@@ -75,6 +75,7 @@
             this.panel_Graph = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lb_Time = new System.Windows.Forms.Label();
+            this.btn_Look = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage_Setting.SuspendLayout();
@@ -183,6 +184,12 @@
             // 
             // tabPage_Setting
             // 
+            this.tabPage_Setting.Controls.Add(this.btn_Look);
+            this.tabPage_Setting.Controls.Add(this.btn_clook);
+            this.tabPage_Setting.Controls.Add(this.btn_cscan);
+            this.tabPage_Setting.Controls.Add(this.btn_Scan);
+            this.tabPage_Setting.Controls.Add(this.btn_SSTF);
+            this.tabPage_Setting.Controls.Add(this.btn_FCFS);
             this.tabPage_Setting.Controls.Add(this.txt_HeadValue);
             this.tabPage_Setting.Controls.Add(this.button1);
             this.tabPage_Setting.Controls.Add(this.label2);
@@ -190,11 +197,6 @@
             this.tabPage_Setting.Controls.Add(this.label1);
             this.tabPage_Setting.Controls.Add(this.btn_Clear);
             this.tabPage_Setting.Controls.Add(this.btn_FillRandom);
-            this.tabPage_Setting.Controls.Add(this.btn_clook);
-            this.tabPage_Setting.Controls.Add(this.btn_cscan);
-            this.tabPage_Setting.Controls.Add(this.btn_Scan);
-            this.tabPage_Setting.Controls.Add(this.btn_SSTF);
-            this.tabPage_Setting.Controls.Add(this.btn_FCFS);
             this.tabPage_Setting.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage_Setting.Location = new System.Drawing.Point(4, 33);
             this.tabPage_Setting.Name = "tabPage_Setting";
@@ -215,6 +217,7 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(10, 53);
             this.button1.Name = "button1";
@@ -244,12 +247,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(290, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 24);
+            this.label1.Size = new System.Drawing.Size(231, 34);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Disk Request:";
+            this.label1.Text = "DISK REQUEST";
             // 
             // btn_Clear
             // 
@@ -276,7 +279,7 @@
             // btn_clook
             // 
             this.btn_clook.AutoSize = true;
-            this.btn_clook.Location = new System.Drawing.Point(655, 294);
+            this.btn_clook.Location = new System.Drawing.Point(557, 295);
             this.btn_clook.Name = "btn_clook";
             this.btn_clook.Size = new System.Drawing.Size(108, 28);
             this.btn_clook.TabIndex = 9;
@@ -287,7 +290,7 @@
             // btn_cscan
             // 
             this.btn_cscan.AutoSize = true;
-            this.btn_cscan.Location = new System.Drawing.Point(486, 294);
+            this.btn_cscan.Location = new System.Drawing.Point(403, 295);
             this.btn_cscan.Name = "btn_cscan";
             this.btn_cscan.Size = new System.Drawing.Size(106, 28);
             this.btn_cscan.TabIndex = 8;
@@ -298,7 +301,7 @@
             // btn_Scan
             // 
             this.btn_Scan.AutoSize = true;
-            this.btn_Scan.Location = new System.Drawing.Point(339, 294);
+            this.btn_Scan.Location = new System.Drawing.Point(271, 295);
             this.btn_Scan.Name = "btn_Scan";
             this.btn_Scan.Size = new System.Drawing.Size(84, 28);
             this.btn_Scan.TabIndex = 7;
@@ -309,7 +312,7 @@
             // btn_SSTF
             // 
             this.btn_SSTF.AutoSize = true;
-            this.btn_SSTF.Location = new System.Drawing.Point(195, 294);
+            this.btn_SSTF.Location = new System.Drawing.Point(142, 295);
             this.btn_SSTF.Name = "btn_SSTF";
             this.btn_SSTF.Size = new System.Drawing.Size(81, 28);
             this.btn_SSTF.TabIndex = 6;
@@ -320,7 +323,7 @@
             // btn_FCFS
             // 
             this.btn_FCFS.AutoSize = true;
-            this.btn_FCFS.Location = new System.Drawing.Point(49, 294);
+            this.btn_FCFS.Location = new System.Drawing.Point(11, 295);
             this.btn_FCFS.Name = "btn_FCFS";
             this.btn_FCFS.Size = new System.Drawing.Size(83, 28);
             this.btn_FCFS.TabIndex = 4;
@@ -567,6 +570,17 @@
             this.lb_Time.TabIndex = 3;
             this.lb_Time.Text = "Time";
             // 
+            // btn_Look
+            // 
+            this.btn_Look.AutoSize = true;
+            this.btn_Look.Location = new System.Drawing.Point(713, 295);
+            this.btn_Look.Name = "btn_Look";
+            this.btn_Look.Size = new System.Drawing.Size(86, 28);
+            this.btn_Look.TabIndex = 12;
+            this.btn_Look.TabStop = true;
+            this.btn_Look.Text = "LOOK";
+            this.btn_Look.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -653,6 +667,7 @@
         private System.Windows.Forms.Label lb_Time;
         private System.Windows.Forms.TextBox txt_HeadValue;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton btn_Look;
     }
 }
 
