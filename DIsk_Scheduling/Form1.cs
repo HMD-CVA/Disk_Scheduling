@@ -72,8 +72,13 @@ namespace DIsk_Scheduling
             }
         }
 
-        private void UserInput()
+        private bool UserInput()
         {
+            if (txt_HeadValue.Text == string.Empty || txt_Input.Text == string.Empty)
+            {
+                MessageBox.Show("Please type enough input to start", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             if (int.TryParse(txt_HeadValue.Text, out int value))
             {
                 // Đảm bảo giá trị nằm trong khoảng cho phép của HeadValue
@@ -84,6 +89,7 @@ namespace DIsk_Scheduling
             else
             {
                 MessageBox.Show("Please enter a valid integer for the head position!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
             try
             {
@@ -92,17 +98,20 @@ namespace DIsk_Scheduling
             catch
             {
                 MessageBox.Show("Invalid input! Please enter numbers separated by commas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false ;
             }
+            return true;
         }
 
         private void btn_Start_Click(object sender, EventArgs e)
         {
             txt_SeekCnt.Clear();
-            if (txt_Input.Text != string.Empty) UserInput();
-            foreach (int i in requestQueue)
-            {
-                txt_SeekCnt.Text += i.ToString() + " ";// Attention
-            }
+            if (!UserInput()) return;
+       
+            //foreach (int i in requestQueue)
+            //{
+            //    txt_SeekCnt.Text += i.ToString() + " ";// Attention
+            //}
             if (!btn_FCFS.Checked && !btn_SSTF.Checked && !btn_Scan.Checked && !btn_cscan.Checked && !btn_clook.Checked && !btn_Look.Checked)
             {
                 MessageBox.Show("Please select type to start", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -611,6 +620,12 @@ namespace DIsk_Scheduling
 
         private void txt_HeadValue_TextChanged(object sender, EventArgs e)
         {
+            if (txt_HeadValue.Text == string.Empty)
+            {
+                HeadValue.Value = 0;
+                txt_HeadValue.Text = string.Empty;
+                return;
+            }
             if (int.TryParse(txt_HeadValue.Text, out int value))
             {
                 // Gán giá trị vào HeadValue và HeadPosition nếu hợp lệ
