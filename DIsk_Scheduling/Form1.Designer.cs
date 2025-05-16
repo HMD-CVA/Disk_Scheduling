@@ -41,6 +41,12 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage_Setting = new System.Windows.Forms.TabPage();
+            this.btn_Look = new System.Windows.Forms.RadioButton();
+            this.btn_clook = new System.Windows.Forms.RadioButton();
+            this.btn_cscan = new System.Windows.Forms.RadioButton();
+            this.btn_Scan = new System.Windows.Forms.RadioButton();
+            this.btn_SSTF = new System.Windows.Forms.RadioButton();
+            this.btn_FCFS = new System.Windows.Forms.RadioButton();
             this.txt_HeadValue = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,11 +54,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_FillRandom = new System.Windows.Forms.Button();
-            this.btn_clook = new System.Windows.Forms.RadioButton();
-            this.btn_cscan = new System.Windows.Forms.RadioButton();
-            this.btn_Scan = new System.Windows.Forms.RadioButton();
-            this.btn_SSTF = new System.Windows.Forms.RadioButton();
-            this.btn_FCFS = new System.Windows.Forms.RadioButton();
             this.tabPage_Control = new System.Windows.Forms.TabPage();
             this.lb_MaxCy = new System.Windows.Forms.Label();
             this.lb_MinCy = new System.Windows.Forms.Label();
@@ -65,6 +66,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_Report = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_ToRight = new System.Windows.Forms.RadioButton();
+            this.btn_ToLeft = new System.Windows.Forms.RadioButton();
             this.btn_Exit = new System.Windows.Forms.Button();
             this.btn_Reset = new System.Windows.Forms.Button();
             this.btn_Start = new System.Windows.Forms.Button();
@@ -75,9 +78,6 @@
             this.panel_Graph = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lb_Time = new System.Windows.Forms.Label();
-            this.btn_Look = new System.Windows.Forms.RadioButton();
-            this.btn_ToLeft = new System.Windows.Forms.RadioButton();
-            this.btn_ToRight = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage_Setting.SuspendLayout();
@@ -123,25 +123,25 @@
             // homeToolStripMenuItem
             // 
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(147, 32);
             this.homeToolStripMenuItem.Text = "Home";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(147, 32);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(147, 32);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 32);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(147, 32);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -207,6 +207,76 @@
             this.tabPage_Setting.TabIndex = 0;
             this.tabPage_Setting.Text = "Setting";
             this.tabPage_Setting.UseVisualStyleBackColor = true;
+            // 
+            // btn_Look
+            // 
+            this.btn_Look.AutoSize = true;
+            this.btn_Look.Location = new System.Drawing.Point(713, 295);
+            this.btn_Look.Name = "btn_Look";
+            this.btn_Look.Size = new System.Drawing.Size(86, 28);
+            this.btn_Look.TabIndex = 12;
+            this.btn_Look.TabStop = true;
+            this.btn_Look.Text = "LOOK";
+            this.btn_Look.UseVisualStyleBackColor = true;
+            this.btn_Look.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
+            // 
+            // btn_clook
+            // 
+            this.btn_clook.AutoSize = true;
+            this.btn_clook.Location = new System.Drawing.Point(557, 295);
+            this.btn_clook.Name = "btn_clook";
+            this.btn_clook.Size = new System.Drawing.Size(108, 28);
+            this.btn_clook.TabIndex = 9;
+            this.btn_clook.TabStop = true;
+            this.btn_clook.Text = "C-LOOK";
+            this.btn_clook.UseVisualStyleBackColor = true;
+            this.btn_clook.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
+            // 
+            // btn_cscan
+            // 
+            this.btn_cscan.AutoSize = true;
+            this.btn_cscan.Location = new System.Drawing.Point(403, 295);
+            this.btn_cscan.Name = "btn_cscan";
+            this.btn_cscan.Size = new System.Drawing.Size(106, 28);
+            this.btn_cscan.TabIndex = 8;
+            this.btn_cscan.TabStop = true;
+            this.btn_cscan.Text = "C-SCAN";
+            this.btn_cscan.UseVisualStyleBackColor = true;
+            this.btn_cscan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
+            // 
+            // btn_Scan
+            // 
+            this.btn_Scan.AutoSize = true;
+            this.btn_Scan.Location = new System.Drawing.Point(271, 295);
+            this.btn_Scan.Name = "btn_Scan";
+            this.btn_Scan.Size = new System.Drawing.Size(84, 28);
+            this.btn_Scan.TabIndex = 7;
+            this.btn_Scan.TabStop = true;
+            this.btn_Scan.Text = "SCAN";
+            this.btn_Scan.UseVisualStyleBackColor = true;
+            this.btn_Scan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
+            // 
+            // btn_SSTF
+            // 
+            this.btn_SSTF.AutoSize = true;
+            this.btn_SSTF.Location = new System.Drawing.Point(142, 295);
+            this.btn_SSTF.Name = "btn_SSTF";
+            this.btn_SSTF.Size = new System.Drawing.Size(81, 28);
+            this.btn_SSTF.TabIndex = 6;
+            this.btn_SSTF.TabStop = true;
+            this.btn_SSTF.Text = "SSTF";
+            this.btn_SSTF.UseVisualStyleBackColor = true;
+            // 
+            // btn_FCFS
+            // 
+            this.btn_FCFS.AutoSize = true;
+            this.btn_FCFS.Location = new System.Drawing.Point(11, 295);
+            this.btn_FCFS.Name = "btn_FCFS";
+            this.btn_FCFS.Size = new System.Drawing.Size(83, 28);
+            this.btn_FCFS.TabIndex = 4;
+            this.btn_FCFS.TabStop = true;
+            this.btn_FCFS.Text = "FCFS";
+            this.btn_FCFS.UseVisualStyleBackColor = true;
             // 
             // txt_HeadValue
             // 
@@ -277,64 +347,6 @@
             this.btn_FillRandom.Text = "Fill Random";
             this.btn_FillRandom.UseVisualStyleBackColor = true;
             this.btn_FillRandom.Click += new System.EventHandler(this.btn_FillRandom_Click);
-            // 
-            // btn_clook
-            // 
-            this.btn_clook.AutoSize = true;
-            this.btn_clook.Location = new System.Drawing.Point(557, 295);
-            this.btn_clook.Name = "btn_clook";
-            this.btn_clook.Size = new System.Drawing.Size(108, 28);
-            this.btn_clook.TabIndex = 9;
-            this.btn_clook.TabStop = true;
-            this.btn_clook.Text = "C-LOOK";
-            this.btn_clook.UseVisualStyleBackColor = true;
-            this.btn_clook.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
-            // 
-            // btn_cscan
-            // 
-            this.btn_cscan.AutoSize = true;
-            this.btn_cscan.Location = new System.Drawing.Point(403, 295);
-            this.btn_cscan.Name = "btn_cscan";
-            this.btn_cscan.Size = new System.Drawing.Size(106, 28);
-            this.btn_cscan.TabIndex = 8;
-            this.btn_cscan.TabStop = true;
-            this.btn_cscan.Text = "C-SCAN";
-            this.btn_cscan.UseVisualStyleBackColor = true;
-            this.btn_cscan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
-            // 
-            // btn_Scan
-            // 
-            this.btn_Scan.AutoSize = true;
-            this.btn_Scan.Location = new System.Drawing.Point(271, 295);
-            this.btn_Scan.Name = "btn_Scan";
-            this.btn_Scan.Size = new System.Drawing.Size(84, 28);
-            this.btn_Scan.TabIndex = 7;
-            this.btn_Scan.TabStop = true;
-            this.btn_Scan.Text = "SCAN";
-            this.btn_Scan.UseVisualStyleBackColor = true;
-            this.btn_Scan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
-            // 
-            // btn_SSTF
-            // 
-            this.btn_SSTF.AutoSize = true;
-            this.btn_SSTF.Location = new System.Drawing.Point(142, 295);
-            this.btn_SSTF.Name = "btn_SSTF";
-            this.btn_SSTF.Size = new System.Drawing.Size(81, 28);
-            this.btn_SSTF.TabIndex = 6;
-            this.btn_SSTF.TabStop = true;
-            this.btn_SSTF.Text = "SSTF";
-            this.btn_SSTF.UseVisualStyleBackColor = true;
-            // 
-            // btn_FCFS
-            // 
-            this.btn_FCFS.AutoSize = true;
-            this.btn_FCFS.Location = new System.Drawing.Point(11, 295);
-            this.btn_FCFS.Name = "btn_FCFS";
-            this.btn_FCFS.Size = new System.Drawing.Size(83, 28);
-            this.btn_FCFS.TabIndex = 4;
-            this.btn_FCFS.TabStop = true;
-            this.btn_FCFS.Text = "FCFS";
-            this.btn_FCFS.UseVisualStyleBackColor = true;
             // 
             // tabPage_Control
             // 
@@ -467,6 +479,30 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "REPORT";
             // 
+            // btn_ToRight
+            // 
+            this.btn_ToRight.AutoSize = true;
+            this.btn_ToRight.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ToRight.Location = new System.Drawing.Point(690, 311);
+            this.btn_ToRight.Name = "btn_ToRight";
+            this.btn_ToRight.Size = new System.Drawing.Size(220, 34);
+            this.btn_ToRight.TabIndex = 7;
+            this.btn_ToRight.TabStop = true;
+            this.btn_ToRight.Text = "Right Head Position";
+            this.btn_ToRight.UseVisualStyleBackColor = true;
+            // 
+            // btn_ToLeft
+            // 
+            this.btn_ToLeft.AutoSize = true;
+            this.btn_ToLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ToLeft.Location = new System.Drawing.Point(229, 311);
+            this.btn_ToLeft.Name = "btn_ToLeft";
+            this.btn_ToLeft.Size = new System.Drawing.Size(205, 34);
+            this.btn_ToLeft.TabIndex = 6;
+            this.btn_ToLeft.TabStop = true;
+            this.btn_ToLeft.Text = "Left Head Position";
+            this.btn_ToLeft.UseVisualStyleBackColor = true;
+            // 
             // btn_Exit
             // 
             this.btn_Exit.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -576,42 +612,6 @@
             this.lb_Time.Size = new System.Drawing.Size(61, 30);
             this.lb_Time.TabIndex = 3;
             this.lb_Time.Text = "Time";
-            // 
-            // btn_Look
-            // 
-            this.btn_Look.AutoSize = true;
-            this.btn_Look.Location = new System.Drawing.Point(713, 295);
-            this.btn_Look.Name = "btn_Look";
-            this.btn_Look.Size = new System.Drawing.Size(86, 28);
-            this.btn_Look.TabIndex = 12;
-            this.btn_Look.TabStop = true;
-            this.btn_Look.Text = "LOOK";
-            this.btn_Look.UseVisualStyleBackColor = true;
-            this.btn_Look.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
-            // 
-            // btn_ToLeft
-            // 
-            this.btn_ToLeft.AutoSize = true;
-            this.btn_ToLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ToLeft.Location = new System.Drawing.Point(229, 311);
-            this.btn_ToLeft.Name = "btn_ToLeft";
-            this.btn_ToLeft.Size = new System.Drawing.Size(205, 34);
-            this.btn_ToLeft.TabIndex = 6;
-            this.btn_ToLeft.TabStop = true;
-            this.btn_ToLeft.Text = "Left Head Position";
-            this.btn_ToLeft.UseVisualStyleBackColor = true;
-            // 
-            // btn_ToRight
-            // 
-            this.btn_ToRight.AutoSize = true;
-            this.btn_ToRight.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ToRight.Location = new System.Drawing.Point(690, 311);
-            this.btn_ToRight.Name = "btn_ToRight";
-            this.btn_ToRight.Size = new System.Drawing.Size(220, 34);
-            this.btn_ToRight.TabIndex = 7;
-            this.btn_ToRight.TabStop = true;
-            this.btn_ToRight.Text = "Right Head Position";
-            this.btn_ToRight.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

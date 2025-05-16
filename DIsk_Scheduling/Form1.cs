@@ -95,9 +95,9 @@ namespace DIsk_Scheduling
             if (txt_Input.Text != string.Empty) UserInput();
             foreach (int i in requestQueue)
             {
-                txt_SeekCnt.Text += i.ToString() + " ";
+                txt_SeekCnt.Text += i.ToString() + " ";// Attention
             }
-            if (!btn_FCFS.Checked && !btn_SSTF.Checked && !btn_Scan.Checked && !btn_cscan.Checked && !btn_clook.Checked)
+            if (!btn_FCFS.Checked && !btn_SSTF.Checked && !btn_Scan.Checked && !btn_cscan.Checked && !btn_clook.Checked && !btn_Look.Checked)
             {
                 MessageBox.Show("Please select type to start", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -114,6 +114,18 @@ namespace DIsk_Scheduling
             {
                 SCAN();
             }
+            if (btn_cscan.Checked)
+            {
+                CSCAN();    
+            }
+            if (btn_clook.Checked)
+            {
+                CLOOK();
+            }
+            if (btn_Look.Checked)
+            {
+                LOOK();
+            }
             currentStep = 0;
             isAnimating = true; // bắt đầu animation
             panel_Graph.Invalidate();
@@ -126,7 +138,9 @@ namespace DIsk_Scheduling
             btn_SSTF.Checked = false;
             btn_cscan.Checked = false;
             btn_clook.Checked = false;
-
+            btn_Look.Checked = false;
+            btn_ToLeft.Checked = false;
+            btn_ToRight.Checked = false;   
 
             txt_Input.Clear();
             txt_SeekCnt.Clear();
@@ -145,6 +159,7 @@ namespace DIsk_Scheduling
 
         private void btn_FillRandom_Click(object sender, EventArgs e)
         {
+            txt_HeadValue.TextChanged -= txt_HeadValue_TextChanged;
             requestQueue.Clear();
             string s = string.Empty;
             string h = string.Empty;
@@ -168,6 +183,7 @@ namespace DIsk_Scheduling
             txt_HeadValue.Text = h;
             txt_Input.Clear();
             txt_Input.Text = s;
+            txt_HeadValue.TextChanged += txt_HeadValue_TextChanged;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -398,13 +414,12 @@ namespace DIsk_Scheduling
 
             splitXData(ref left, ref right, toward);
 
-
             if (toward && !right.Contains(maxTrack))
             {
                 right.Add(maxTrack);
                 xData.Add(maxTrack);
             }
-            else if (toward && !left.Contains(0))
+            else if (!toward && !left.Contains(0))
             {
                 left.Add(0);
                 xData.Add(0);
@@ -416,10 +431,152 @@ namespace DIsk_Scheduling
             if (toward) result = right.Concat(left).ToList();
             else result = left.Concat(right).ToList();
 
+            //string s = HeadPosition.ToString() + " ";
+            //foreach (int i in result) s += i.ToString() + " ";
+            txt_SeekCnt.Text = calSeekCount().ToString();
+            paintQueue = result;
+        }
+        void CSCAN()
+        {
+            if (HeadPosition > maxTrack || xData.Max() > maxTrack)
+            {
+                MessageBox.Show("?????", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (!btn_ToLeft.Checked && !btn_ToRight.Checked)
+            {
+                MessageBox.Show("Please choose type", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            bool larger = true;
+
+            if (btn_ToLeft.Checked)
+            {
+                larger = false;
+            }
+
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            splitXData(ref left, ref right, larger);
+
+            if (!right.Contains(maxTrack))
+            {
+                right.Add(maxTrack);
+                xData.Add(maxTrack);
+            }
+
+            if (!left.Contains(0))
+            {
+                left.Add(0);
+                xData.Add(0);
+            }
+
+            if (larger)
+            {
+                right.Sort();
+                left.Sort();
+                result = right.Concat(left).ToList();
+            }
+            else
+            {
+                Comparison<int> com = (a, b) => b.CompareTo(a);
+                right.Sort(com);
+                left.Sort(com);
+                result = left.Concat(right).ToList();
+            }
+
+            paintQueue = result;
+
             string s = HeadPosition.ToString() + " ";
             foreach (int i in result) s += i.ToString() + " ";
             txt_SeekCnt.Text = s + " | " + calSeekCount().ToString();
+        }
+
+
+        private void LOOK()
+        {
+            if (HeadPosition > maxTrack || xData.Max() > maxTrack)
+            {
+                MessageBox.Show("?????", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (!btn_ToLeft.Checked && !btn_ToRight.Checked)
+            {
+                MessageBox.Show("Please choose type", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            bool larger = true;
+
+            if (btn_ToLeft.Checked)
+            {
+                larger = false;
+            }
+
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            splitXData(ref left, ref right, larger);
+
+            right.Sort();
+            left.Sort((a, b) => b.CompareTo(a));
+
+            if (larger) result = right.Concat(left).ToList();
+            else result = left.Concat(right).ToList();
+
             paintQueue = result;
+
+            string s = HeadPosition.ToString() + " ";
+            foreach (int i in result) s += i.ToString() + " ";
+            txt_SeekCnt.Text = s + " | " + calSeekCount().ToString();
+        }
+
+        private void CLOOK()
+        {
+            if (HeadPosition > maxTrack || xData.Max() > maxTrack)
+            {
+                MessageBox.Show("?????", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (!btn_ToLeft.Checked && !btn_ToRight.Checked)
+            {
+                MessageBox.Show("Please choose type", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            bool larger = true;
+
+            if (btn_ToLeft.Checked)
+            {
+                larger = false;
+            }
+
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            splitXData(ref left, ref right, larger);
+
+            if (larger)
+            {
+                right.Sort();
+                left.Sort();
+                result = right.Concat(left).ToList();
+            }
+            else
+            {
+                Comparison<int> com = (a, b) => b.CompareTo(a);
+                right.Sort(com);
+                left.Sort(com);
+                result = left.Concat(right).ToList();
+            }
+
+            paintQueue = result;
+
+            string s = HeadPosition.ToString() + " ";
+            foreach (int i in result) s += i.ToString() + " ";
+            txt_SeekCnt.Text = s + " | " + calSeekCount().ToString();
         }
         private void HeadValue_ValueChanged(object sender, EventArgs e)
         {
