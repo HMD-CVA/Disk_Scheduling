@@ -66,7 +66,7 @@ namespace DIsk_Scheduling
             }
         }
 
-        void UserInput()
+        private void UserInput()
         {
             if (int.TryParse(txt_HeadValue.Text, out int value))
             {
@@ -119,7 +119,7 @@ namespace DIsk_Scheduling
             panel_Graph.Invalidate();
         }
 
-        void resetAll()
+        private void resetAll()
         {
             btn_FCFS.Checked = false;   
             btn_Scan.Checked = false;
@@ -152,7 +152,12 @@ namespace DIsk_Scheduling
             int rnd = 0;
             for (int i = 0; i < n; i++)
             {
-                rnd = random.Next(randomA, randomB);
+                do
+                {
+                    rnd = random.Next(randomA, randomB);
+                } 
+                while(requestQueue.Contains(rnd));
+                
                 requestQueue.Add(rnd);
                 s += rnd.ToString();
                 if (i < n - 1) s += ", ";
@@ -309,7 +314,7 @@ namespace DIsk_Scheduling
             }
 
         }
-        int calSeekCount()
+        private int calSeekCount()
         {
             int tmp = HeadPosition;
             int seekCount = 0;
@@ -320,18 +325,17 @@ namespace DIsk_Scheduling
             }
             return seekCount;
         }
-        void FCFS()
+        private void FCFS()
         {
             int res = HeadPosition;
             result = xData;
             paintQueue = xData;
             txt_SeekCnt.Text = calSeekCount().ToString();
         }
-        void SSTF()
+        private void SSTF()
         {
             result.Clear();
-            string s = string.Empty;
-            s += HeadPosition.ToString() + " ";
+
             int removeE = HeadPosition;
             var lists = xData.ToList();
             //result.Add(HeadPosition);
@@ -347,14 +351,27 @@ namespace DIsk_Scheduling
                         tmp = i;
                     }
                 }
-                s+= tmp.ToString() + " ";
+
                 removeE = tmp;
                 result.Add(tmp);
                 lists.Remove(removeE);
             }
             
-            txt_SeekCnt.Text = s;
+            txt_SeekCnt.Text = calSeekCount().ToString();
             paintQueue = result;
+        }
+        private void splitXData(ref List<int> left, ref List<int> right, bool Larger)
+        {
+            foreach (int i in xData)
+            {
+                if (i == HeadPosition)
+                {
+                    if (Larger) right.Add(i);
+                    else left.Add(i);
+                }
+                else if (i < HeadPosition) left.Add(i);
+                else right.Add(i);
+            }
         }
         void SCAN()
         {
@@ -363,7 +380,46 @@ namespace DIsk_Scheduling
                 MessageBox.Show("?????", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            if (!btn_ToLeft.Checked && !btn_ToRight.Checked)
+            {
+                MessageBox.Show("Please choose type", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            bool toward = true;
+
+            if (btn_ToLeft.Checked)
+            {
+                toward = false;
+            }
+
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            splitXData(ref left, ref right, toward);
+
+
+            if (toward && !right.Contains(maxTrack))
+            {
+                right.Add(maxTrack);
+                xData.Add(maxTrack);
+            }
+            else if (toward && !left.Contains(0))
+            {
+                left.Add(0);
+                xData.Add(0);
+            }
+
+            right.Sort();
+            left.Sort((a, b) => b.CompareTo(a));
+
+            if (toward) result = right.Concat(left).ToList();
+            else result = left.Concat(right).ToList();
+
+            string s = HeadPosition.ToString() + " ";
+            foreach (int i in result) s += i.ToString() + " ";
+            txt_SeekCnt.Text = s + " | " + calSeekCount().ToString();
+            paintQueue = result;
         }
         private void HeadValue_ValueChanged(object sender, EventArgs e)
         {
