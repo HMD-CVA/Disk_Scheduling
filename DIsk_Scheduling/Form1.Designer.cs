@@ -211,6 +211,7 @@
             this.txt_HeadValue.Name = "txt_HeadValue";
             this.txt_HeadValue.Size = new System.Drawing.Size(626, 57);
             this.txt_HeadValue.TabIndex = 11;
+            this.txt_HeadValue.TextChanged += new System.EventHandler(this.txt_HeadValue_TextChanged);
             // 
             // button1
             // 

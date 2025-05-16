@@ -347,5 +347,20 @@ namespace DIsk_Scheduling
             panel_Graph.Invalidate();
             
         }
+
+        private void txt_HeadValue_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(txt_HeadValue.Text, out int value))
+            {
+                // Gán giá trị vào HeadValue và HeadPosition nếu hợp lệ
+                value = Math.Max((int)HeadValue.Minimum, Math.Min((int)HeadValue.Maximum, value));
+                HeadValue.Value = value;
+                HeadPosition = value;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid integer for the head position!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
