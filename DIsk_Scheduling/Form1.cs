@@ -38,6 +38,8 @@ namespace DIsk_Scheduling
         {
             InitializeComponent();
             this.Size = new Size(Win_Width, Win_Height);
+            btn_ToLeft.Enabled = false;
+            btn_ToRight.Enabled = false;
 
             timer.Interval = 1000;
             timer.Tick += Timer_Tick;
@@ -307,11 +309,23 @@ namespace DIsk_Scheduling
             }
 
         }
+        int calSeekCount()
+        {
+            int tmp = HeadPosition;
+            int seekCount = 0;
+            foreach(int x in result)
+            {
+                seekCount += Math.Abs(x - tmp);
+                tmp = x;
+            }
+            return seekCount;
+        }
         void FCFS()
         {
             int res = HeadPosition;
             result = xData;
             paintQueue = xData;
+            txt_SeekCnt.Text = calSeekCount().ToString();
         }
         void SSTF()
         {
@@ -364,7 +378,31 @@ namespace DIsk_Scheduling
 
         private void txt_HeadValue_TextChanged(object sender, EventArgs e)
         {
+            if (int.TryParse(txt_HeadValue.Text, out int value))
+            {
+                // Gán giá trị vào HeadValue và HeadPosition nếu hợp lệ
+                value = Math.Max((int)HeadValue.Minimum, Math.Min((int)HeadValue.Maximum, value));
+                HeadValue.Value = value;
+                HeadPosition = value;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid integer for the head position!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
+        private void btn_Scan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (btn_Scan.Checked || btn_cscan.Checked || btn_clook.Checked || btn_Look.Checked)
+            {
+                btn_ToLeft.Enabled = true;
+                btn_ToRight.Enabled = true;
+            }
+            else
+            {
+                btn_ToLeft.Enabled = false;
+                btn_ToRight.Enabled = false;
+            }
         }
     }
 }
