@@ -41,12 +41,13 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage_Setting = new System.Windows.Forms.TabPage();
-            this.btn_Look = new System.Windows.Forms.RadioButton();
+            this.gb_alo = new System.Windows.Forms.GroupBox();
             this.btn_clook = new System.Windows.Forms.RadioButton();
+            this.btn_Look = new System.Windows.Forms.RadioButton();
+            this.btn_FCFS = new System.Windows.Forms.RadioButton();
+            this.btn_SSTF = new System.Windows.Forms.RadioButton();
             this.btn_cscan = new System.Windows.Forms.RadioButton();
             this.btn_Scan = new System.Windows.Forms.RadioButton();
-            this.btn_SSTF = new System.Windows.Forms.RadioButton();
-            this.btn_FCFS = new System.Windows.Forms.RadioButton();
             this.txt_HeadValue = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,7 +66,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pn_STvaRP = new System.Windows.Forms.Panel();
             this.panel_Report = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gb_Report = new System.Windows.Forms.GroupBox();
             this.btn_ToRight = new System.Windows.Forms.RadioButton();
             this.btn_ToLeft = new System.Windows.Forms.RadioButton();
             this.btn_Exit = new System.Windows.Forms.Button();
@@ -76,30 +77,36 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel_Setting = new System.Windows.Forms.Panel();
             this.panel_Graph = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gb_Graph = new System.Windows.Forms.GroupBox();
             this.lb_Time = new System.Windows.Forms.Label();
             this.pannel_TS = new System.Windows.Forms.Panel();
-            this.gb_alo = new System.Windows.Forms.GroupBox();
+            this.pn_Full = new System.Windows.Forms.Panel();
+            this.pn_FullGraph = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage_Setting.SuspendLayout();
+            this.gb_alo.SuspendLayout();
             this.tabPage_Control.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Maximum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Minimum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadValue)).BeginInit();
             this.pn_STvaRP.SuspendLayout();
             this.panel_Report.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gb_Report.SuspendLayout();
             this.panel_Setting.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gb_Graph.SuspendLayout();
             this.pannel_TS.SuspendLayout();
-            this.gb_alo.SuspendLayout();
+            this.pn_Full.SuspendLayout();
+            this.pn_FullGraph.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuStrip1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
@@ -108,7 +115,7 @@
             this.menuStrip1.MdiWindowListItem = this.editToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ShowItemToolTips = true;
-            this.menuStrip1.Size = new System.Drawing.Size(1904, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1904, 26);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -121,38 +128,38 @@
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 22);
             this.fileToolStripMenuItem.Text = "File";
             this.fileToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // homeToolStripMenuItem
             // 
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.homeToolStripMenuItem.Text = "Home";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(48, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(48, 22);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // aboutToolStripMenuItem
@@ -161,19 +168,19 @@
             this.aboutUsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(61, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // aboutUsToolStripMenuItem
             // 
             this.aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
-            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.aboutUsToolStripMenuItem.Text = "About us";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // TabControl
@@ -186,7 +193,7 @@
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(859, 306);
+            this.TabControl.Size = new System.Drawing.Size(859, 313);
             this.TabControl.TabIndex = 1;
             // 
             // tabPage_Setting
@@ -203,10 +210,39 @@
             this.tabPage_Setting.Location = new System.Drawing.Point(4, 33);
             this.tabPage_Setting.Name = "tabPage_Setting";
             this.tabPage_Setting.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Setting.Size = new System.Drawing.Size(851, 269);
+            this.tabPage_Setting.Size = new System.Drawing.Size(851, 276);
             this.tabPage_Setting.TabIndex = 0;
             this.tabPage_Setting.Text = "Setting";
             this.tabPage_Setting.UseVisualStyleBackColor = true;
+            // 
+            // gb_alo
+            // 
+            this.gb_alo.AutoSize = true;
+            this.gb_alo.Controls.Add(this.btn_clook);
+            this.gb_alo.Controls.Add(this.btn_Look);
+            this.gb_alo.Controls.Add(this.btn_FCFS);
+            this.gb_alo.Controls.Add(this.btn_SSTF);
+            this.gb_alo.Controls.Add(this.btn_cscan);
+            this.gb_alo.Controls.Add(this.btn_Scan);
+            this.gb_alo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gb_alo.Location = new System.Drawing.Point(723, 3);
+            this.gb_alo.Name = "gb_alo";
+            this.gb_alo.Size = new System.Drawing.Size(125, 270);
+            this.gb_alo.TabIndex = 13;
+            this.gb_alo.TabStop = false;
+            this.gb_alo.Text = "Algorithm";
+            // 
+            // btn_clook
+            // 
+            this.btn_clook.AutoSize = true;
+            this.btn_clook.Location = new System.Drawing.Point(11, 186);
+            this.btn_clook.Name = "btn_clook";
+            this.btn_clook.Size = new System.Drawing.Size(108, 28);
+            this.btn_clook.TabIndex = 9;
+            this.btn_clook.TabStop = true;
+            this.btn_clook.Text = "C-LOOK";
+            this.btn_clook.UseVisualStyleBackColor = true;
+            this.btn_clook.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
             // 
             // btn_Look
             // 
@@ -220,17 +256,27 @@
             this.btn_Look.UseVisualStyleBackColor = true;
             this.btn_Look.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
             // 
-            // btn_clook
+            // btn_FCFS
             // 
-            this.btn_clook.AutoSize = true;
-            this.btn_clook.Location = new System.Drawing.Point(11, 186);
-            this.btn_clook.Name = "btn_clook";
-            this.btn_clook.Size = new System.Drawing.Size(108, 28);
-            this.btn_clook.TabIndex = 9;
-            this.btn_clook.TabStop = true;
-            this.btn_clook.Text = "C-LOOK";
-            this.btn_clook.UseVisualStyleBackColor = true;
-            this.btn_clook.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
+            this.btn_FCFS.AutoSize = true;
+            this.btn_FCFS.Location = new System.Drawing.Point(11, 42);
+            this.btn_FCFS.Name = "btn_FCFS";
+            this.btn_FCFS.Size = new System.Drawing.Size(83, 28);
+            this.btn_FCFS.TabIndex = 4;
+            this.btn_FCFS.TabStop = true;
+            this.btn_FCFS.Text = "FCFS";
+            this.btn_FCFS.UseVisualStyleBackColor = true;
+            // 
+            // btn_SSTF
+            // 
+            this.btn_SSTF.AutoSize = true;
+            this.btn_SSTF.Location = new System.Drawing.Point(11, 78);
+            this.btn_SSTF.Name = "btn_SSTF";
+            this.btn_SSTF.Size = new System.Drawing.Size(81, 28);
+            this.btn_SSTF.TabIndex = 6;
+            this.btn_SSTF.TabStop = true;
+            this.btn_SSTF.Text = "SSTF";
+            this.btn_SSTF.UseVisualStyleBackColor = true;
             // 
             // btn_cscan
             // 
@@ -256,34 +302,12 @@
             this.btn_Scan.UseVisualStyleBackColor = true;
             this.btn_Scan.CheckedChanged += new System.EventHandler(this.btn_Scan_CheckedChanged);
             // 
-            // btn_SSTF
-            // 
-            this.btn_SSTF.AutoSize = true;
-            this.btn_SSTF.Location = new System.Drawing.Point(11, 78);
-            this.btn_SSTF.Name = "btn_SSTF";
-            this.btn_SSTF.Size = new System.Drawing.Size(81, 28);
-            this.btn_SSTF.TabIndex = 6;
-            this.btn_SSTF.TabStop = true;
-            this.btn_SSTF.Text = "SSTF";
-            this.btn_SSTF.UseVisualStyleBackColor = true;
-            // 
-            // btn_FCFS
-            // 
-            this.btn_FCFS.AutoSize = true;
-            this.btn_FCFS.Location = new System.Drawing.Point(11, 42);
-            this.btn_FCFS.Name = "btn_FCFS";
-            this.btn_FCFS.Size = new System.Drawing.Size(83, 28);
-            this.btn_FCFS.TabIndex = 4;
-            this.btn_FCFS.TabStop = true;
-            this.btn_FCFS.Text = "FCFS";
-            this.btn_FCFS.UseVisualStyleBackColor = true;
-            // 
             // txt_HeadValue
             // 
             this.txt_HeadValue.Location = new System.Drawing.Point(169, 53);
             this.txt_HeadValue.Multiline = true;
             this.txt_HeadValue.Name = "txt_HeadValue";
-            this.txt_HeadValue.Size = new System.Drawing.Size(500, 57);
+            this.txt_HeadValue.Size = new System.Drawing.Size(548, 57);
             this.txt_HeadValue.TabIndex = 11;
             this.txt_HeadValue.TextChanged += new System.EventHandler(this.txt_HeadValue_TextChanged);
             // 
@@ -302,7 +326,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(194, 243);
+            this.label2.Location = new System.Drawing.Point(225, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(428, 24);
             this.label2.TabIndex = 5;
@@ -313,7 +337,7 @@
             this.txt_Input.Location = new System.Drawing.Point(169, 118);
             this.txt_Input.Multiline = true;
             this.txt_Input.Name = "txt_Input";
-            this.txt_Input.Size = new System.Drawing.Size(500, 122);
+            this.txt_Input.Size = new System.Drawing.Size(548, 122);
             this.txt_Input.TabIndex = 3;
             // 
             // label1
@@ -361,7 +385,7 @@
             this.tabPage_Control.Location = new System.Drawing.Point(4, 33);
             this.tabPage_Control.Name = "tabPage_Control";
             this.tabPage_Control.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Control.Size = new System.Drawing.Size(851, 269);
+            this.tabPage_Control.Size = new System.Drawing.Size(851, 276);
             this.tabPage_Control.TabIndex = 1;
             this.tabPage_Control.Text = "Control";
             this.tabPage_Control.UseVisualStyleBackColor = true;
@@ -445,43 +469,45 @@
             // 
             this.pn_STvaRP.Controls.Add(this.panel_Report);
             this.pn_STvaRP.Controls.Add(this.panel_Setting);
-            this.pn_STvaRP.Location = new System.Drawing.Point(0, 31);
+            this.pn_STvaRP.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pn_STvaRP.Location = new System.Drawing.Point(0, 0);
             this.pn_STvaRP.Name = "pn_STvaRP";
-            this.pn_STvaRP.Size = new System.Drawing.Size(1904, 308);
+            this.pn_STvaRP.Size = new System.Drawing.Size(1904, 315);
             this.pn_STvaRP.TabIndex = 2;
             // 
             // panel_Report
             // 
             this.panel_Report.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_Report.Controls.Add(this.groupBox2);
-            this.panel_Report.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel_Report.Location = new System.Drawing.Point(862, 0);
+            this.panel_Report.Controls.Add(this.gb_Report);
+            this.panel_Report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_Report.Location = new System.Drawing.Point(861, 0);
             this.panel_Report.Name = "panel_Report";
-            this.panel_Report.Size = new System.Drawing.Size(1042, 308);
+            this.panel_Report.Size = new System.Drawing.Size(1043, 315);
             this.panel_Report.TabIndex = 3;
             // 
-            // groupBox2
+            // gb_Report
             // 
-            this.groupBox2.Controls.Add(this.btn_ToRight);
-            this.groupBox2.Controls.Add(this.btn_ToLeft);
-            this.groupBox2.Controls.Add(this.btn_Exit);
-            this.groupBox2.Controls.Add(this.btn_Reset);
-            this.groupBox2.Controls.Add(this.btn_Start);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txt_SeekCnt);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1040, 306);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "REPORT";
+            this.gb_Report.Controls.Add(this.btn_ToRight);
+            this.gb_Report.Controls.Add(this.btn_ToLeft);
+            this.gb_Report.Controls.Add(this.btn_Exit);
+            this.gb_Report.Controls.Add(this.btn_Reset);
+            this.gb_Report.Controls.Add(this.btn_Start);
+            this.gb_Report.Controls.Add(this.label4);
+            this.gb_Report.Controls.Add(this.txt_SeekCnt);
+            this.gb_Report.Controls.Add(this.label3);
+            this.gb_Report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_Report.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_Report.Location = new System.Drawing.Point(0, 0);
+            this.gb_Report.Name = "gb_Report";
+            this.gb_Report.Size = new System.Drawing.Size(1041, 313);
+            this.gb_Report.TabIndex = 0;
+            this.gb_Report.TabStop = false;
+            this.gb_Report.Text = "REPORT";
             // 
             // btn_ToRight
             // 
             this.btn_ToRight.AutoSize = true;
+            this.btn_ToRight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_ToRight.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ToRight.Location = new System.Drawing.Point(641, 262);
             this.btn_ToRight.Name = "btn_ToRight";
@@ -494,6 +520,7 @@
             // btn_ToLeft
             // 
             this.btn_ToLeft.AutoSize = true;
+            this.btn_ToLeft.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_ToLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ToLeft.Location = new System.Drawing.Point(180, 262);
             this.btn_ToLeft.Name = "btn_ToLeft";
@@ -574,33 +601,34 @@
             this.panel_Setting.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Setting.Location = new System.Drawing.Point(0, 0);
             this.panel_Setting.Name = "panel_Setting";
-            this.panel_Setting.Size = new System.Drawing.Size(861, 308);
+            this.panel_Setting.Size = new System.Drawing.Size(861, 315);
             this.panel_Setting.TabIndex = 2;
             // 
             // panel_Graph
             // 
             this.panel_Graph.AutoScroll = true;
+            this.panel_Graph.AutoSize = true;
             this.panel_Graph.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Graph.Location = new System.Drawing.Point(10, 38);
+            this.panel_Graph.Location = new System.Drawing.Point(5, 33);
             this.panel_Graph.Margin = new System.Windows.Forms.Padding(0);
             this.panel_Graph.Name = "panel_Graph";
-            this.panel_Graph.Size = new System.Drawing.Size(1884, 658);
+            this.panel_Graph.Size = new System.Drawing.Size(1884, 647);
             this.panel_Graph.TabIndex = 3;
             this.panel_Graph.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Graph_Paint);
             this.panel_Graph.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Graph_MouseClick);
             // 
-            // groupBox1
+            // gb_Graph
             // 
-            this.groupBox1.Controls.Add(this.panel_Graph);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 335);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox1.Size = new System.Drawing.Size(1904, 706);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "GRAPH";
+            this.gb_Graph.Controls.Add(this.panel_Graph);
+            this.gb_Graph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_Graph.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_Graph.Location = new System.Drawing.Point(5, 5);
+            this.gb_Graph.Name = "gb_Graph";
+            this.gb_Graph.Padding = new System.Windows.Forms.Padding(5, 5, 5, 10);
+            this.gb_Graph.Size = new System.Drawing.Size(1894, 690);
+            this.gb_Graph.TabIndex = 0;
+            this.gb_Graph.TabStop = false;
+            this.gb_Graph.Text = "GRAPH";
             // 
             // lb_Time
             // 
@@ -616,29 +644,45 @@
             // 
             // pannel_TS
             // 
+            this.pannel_TS.AutoSize = true;
             this.pannel_TS.Controls.Add(this.lb_Time);
             this.pannel_TS.Controls.Add(this.menuStrip1);
+            this.pannel_TS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pannel_TS.Dock = System.Windows.Forms.DockStyle.Top;
             this.pannel_TS.Location = new System.Drawing.Point(0, 0);
             this.pannel_TS.Name = "pannel_TS";
-            this.pannel_TS.Size = new System.Drawing.Size(1904, 28);
+            this.pannel_TS.Size = new System.Drawing.Size(1904, 26);
             this.pannel_TS.TabIndex = 3;
             // 
-            // gb_alo
+            // pn_Full
             // 
-            this.gb_alo.Controls.Add(this.btn_clook);
-            this.gb_alo.Controls.Add(this.btn_Look);
-            this.gb_alo.Controls.Add(this.btn_FCFS);
-            this.gb_alo.Controls.Add(this.btn_SSTF);
-            this.gb_alo.Controls.Add(this.btn_cscan);
-            this.gb_alo.Controls.Add(this.btn_Scan);
-            this.gb_alo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.gb_alo.Location = new System.Drawing.Point(690, 3);
-            this.gb_alo.Name = "gb_alo";
-            this.gb_alo.Size = new System.Drawing.Size(158, 263);
-            this.gb_alo.TabIndex = 13;
-            this.gb_alo.TabStop = false;
-            this.gb_alo.Text = "Algorithm";
+            this.pn_Full.Controls.Add(this.pn_FullGraph);
+            this.pn_Full.Controls.Add(this.pn_STvaRP);
+            this.pn_Full.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pn_Full.Location = new System.Drawing.Point(0, 26);
+            this.pn_Full.Name = "pn_Full";
+            this.pn_Full.Size = new System.Drawing.Size(1904, 1015);
+            this.pn_Full.TabIndex = 4;
+            // 
+            // pn_FullGraph
+            // 
+            this.pn_FullGraph.Controls.Add(this.gb_Graph);
+            this.pn_FullGraph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pn_FullGraph.Location = new System.Drawing.Point(0, 315);
+            this.pn_FullGraph.Name = "pn_FullGraph";
+            this.pn_FullGraph.Padding = new System.Windows.Forms.Padding(5);
+            this.pn_FullGraph.Size = new System.Drawing.Size(1904, 700);
+            this.pn_FullGraph.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pn_Full);
+            this.panel1.Controls.Add(this.pannel_TS);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1904, 1041);
+            this.panel1.TabIndex = 5;
             // 
             // Form1
             // 
@@ -646,9 +690,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.ControlBox = false;
-            this.Controls.Add(this.pannel_TS);
-            this.Controls.Add(this.pn_STvaRP);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -660,6 +702,8 @@
             this.TabControl.ResumeLayout(false);
             this.tabPage_Setting.ResumeLayout(false);
             this.tabPage_Setting.PerformLayout();
+            this.gb_alo.ResumeLayout(false);
+            this.gb_alo.PerformLayout();
             this.tabPage_Control.ResumeLayout(false);
             this.tabPage_Control.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Maximum)).EndInit();
@@ -667,14 +711,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.HeadValue)).EndInit();
             this.pn_STvaRP.ResumeLayout(false);
             this.panel_Report.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gb_Report.ResumeLayout(false);
+            this.gb_Report.PerformLayout();
             this.panel_Setting.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.gb_Graph.ResumeLayout(false);
+            this.gb_Graph.PerformLayout();
             this.pannel_TS.ResumeLayout(false);
             this.pannel_TS.PerformLayout();
-            this.gb_alo.ResumeLayout(false);
-            this.gb_alo.PerformLayout();
+            this.pn_Full.ResumeLayout(false);
+            this.pn_FullGraph.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -697,9 +744,9 @@
         private System.Windows.Forms.Panel panel_Graph;
         private System.Windows.Forms.Panel panel_Report;
         private System.Windows.Forms.Panel panel_Setting;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gb_Graph;
         private System.Windows.Forms.TabControl TabControl;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gb_Report;
         private System.Windows.Forms.Button btn_Clear;
         private System.Windows.Forms.Button btn_FillRandom;
         private System.Windows.Forms.TextBox txt_Input;
@@ -732,6 +779,9 @@
         private System.Windows.Forms.RadioButton btn_ToLeft;
         private System.Windows.Forms.Panel pannel_TS;
         private System.Windows.Forms.GroupBox gb_alo;
+        private System.Windows.Forms.Panel pn_Full;
+        private System.Windows.Forms.Panel pn_FullGraph;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

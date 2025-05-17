@@ -383,7 +383,6 @@ namespace DIsk_Scheduling
 
             int removeE = HeadPosition;
             var lists = xData.ToList();
-            //result.Add(HeadPosition);
             while (lists.Count > 0) 
             {
                 int tmp = 0;
@@ -460,8 +459,6 @@ namespace DIsk_Scheduling
             if (toward) result = right.Concat(left).ToList();
             else result = left.Concat(right).ToList();
 
-            //string s = HeadPosition.ToString() + " ";
-            //foreach (int i in result) s += i.ToString() + " ";
             txt_SeekCnt.Text = calSeekCount().ToString();
             paintQueue = result;
         }
