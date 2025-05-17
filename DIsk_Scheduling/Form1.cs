@@ -15,8 +15,8 @@ namespace DIsk_Scheduling
 {
     public partial class Form1 : Form
     {
-        private int Win_Width = 1900;
-        private int Win_Height = 1200;
+        private int Win_Width = 1920;
+        private int Win_Height = 1080;
         private int HeadPosition; // TEST
         private int maxTrack = 199;
 
