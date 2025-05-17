@@ -270,7 +270,7 @@ namespace DIsk_Scheduling
             // Tính toán khoảng cách
             int panelWidth = panel_Graph.Width;
             int panelHeight = panel_Graph.Height;
-            int marginLR = 50; // lề trái và phải
+            int marginLR = 20; // lề trái và phải
             int marginTB = 25; // lề trên và dưới
             int timelineLength = panelWidth - 2 * marginLR;
 

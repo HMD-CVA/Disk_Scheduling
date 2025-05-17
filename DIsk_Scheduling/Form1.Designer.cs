@@ -186,7 +186,7 @@
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(859, 327);
+            this.TabControl.Size = new System.Drawing.Size(859, 306);
             this.TabControl.TabIndex = 1;
             // 
             // tabPage_Setting
@@ -203,7 +203,7 @@
             this.tabPage_Setting.Location = new System.Drawing.Point(4, 33);
             this.tabPage_Setting.Name = "tabPage_Setting";
             this.tabPage_Setting.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Setting.Size = new System.Drawing.Size(851, 290);
+            this.tabPage_Setting.Size = new System.Drawing.Size(851, 269);
             this.tabPage_Setting.TabIndex = 0;
             this.tabPage_Setting.Text = "Setting";
             this.tabPage_Setting.UseVisualStyleBackColor = true;
@@ -211,7 +211,7 @@
             // btn_Look
             // 
             this.btn_Look.AutoSize = true;
-            this.btn_Look.Location = new System.Drawing.Point(10, 207);
+            this.btn_Look.Location = new System.Drawing.Point(11, 222);
             this.btn_Look.Name = "btn_Look";
             this.btn_Look.Size = new System.Drawing.Size(86, 28);
             this.btn_Look.TabIndex = 12;
@@ -223,7 +223,7 @@
             // btn_clook
             // 
             this.btn_clook.AutoSize = true;
-            this.btn_clook.Location = new System.Drawing.Point(10, 171);
+            this.btn_clook.Location = new System.Drawing.Point(11, 186);
             this.btn_clook.Name = "btn_clook";
             this.btn_clook.Size = new System.Drawing.Size(108, 28);
             this.btn_clook.TabIndex = 9;
@@ -235,7 +235,7 @@
             // btn_cscan
             // 
             this.btn_cscan.AutoSize = true;
-            this.btn_cscan.Location = new System.Drawing.Point(10, 135);
+            this.btn_cscan.Location = new System.Drawing.Point(11, 150);
             this.btn_cscan.Name = "btn_cscan";
             this.btn_cscan.Size = new System.Drawing.Size(106, 28);
             this.btn_cscan.TabIndex = 8;
@@ -247,7 +247,7 @@
             // btn_Scan
             // 
             this.btn_Scan.AutoSize = true;
-            this.btn_Scan.Location = new System.Drawing.Point(10, 99);
+            this.btn_Scan.Location = new System.Drawing.Point(11, 114);
             this.btn_Scan.Name = "btn_Scan";
             this.btn_Scan.Size = new System.Drawing.Size(84, 28);
             this.btn_Scan.TabIndex = 7;
@@ -259,7 +259,7 @@
             // btn_SSTF
             // 
             this.btn_SSTF.AutoSize = true;
-            this.btn_SSTF.Location = new System.Drawing.Point(10, 63);
+            this.btn_SSTF.Location = new System.Drawing.Point(11, 78);
             this.btn_SSTF.Name = "btn_SSTF";
             this.btn_SSTF.Size = new System.Drawing.Size(81, 28);
             this.btn_SSTF.TabIndex = 6;
@@ -270,7 +270,7 @@
             // btn_FCFS
             // 
             this.btn_FCFS.AutoSize = true;
-            this.btn_FCFS.Location = new System.Drawing.Point(10, 27);
+            this.btn_FCFS.Location = new System.Drawing.Point(11, 42);
             this.btn_FCFS.Name = "btn_FCFS";
             this.btn_FCFS.Size = new System.Drawing.Size(83, 28);
             this.btn_FCFS.TabIndex = 4;
@@ -302,7 +302,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(194, 259);
+            this.label2.Location = new System.Drawing.Point(194, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(428, 24);
             this.label2.TabIndex = 5;
@@ -310,10 +310,10 @@
             // 
             // txt_Input
             // 
-            this.txt_Input.Location = new System.Drawing.Point(169, 126);
+            this.txt_Input.Location = new System.Drawing.Point(169, 118);
             this.txt_Input.Multiline = true;
             this.txt_Input.Name = "txt_Input";
-            this.txt_Input.Size = new System.Drawing.Size(500, 130);
+            this.txt_Input.Size = new System.Drawing.Size(500, 122);
             this.txt_Input.TabIndex = 3;
             // 
             // label1
@@ -329,7 +329,7 @@
             // btn_Clear
             // 
             this.btn_Clear.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Clear.Location = new System.Drawing.Point(10, 199);
+            this.btn_Clear.Location = new System.Drawing.Point(10, 183);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(153, 57);
             this.btn_Clear.TabIndex = 1;
@@ -340,7 +340,7 @@
             // btn_FillRandom
             // 
             this.btn_FillRandom.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FillRandom.Location = new System.Drawing.Point(10, 126);
+            this.btn_FillRandom.Location = new System.Drawing.Point(10, 118);
             this.btn_FillRandom.Name = "btn_FillRandom";
             this.btn_FillRandom.Size = new System.Drawing.Size(153, 57);
             this.btn_FillRandom.TabIndex = 0;
@@ -361,7 +361,7 @@
             this.tabPage_Control.Location = new System.Drawing.Point(4, 33);
             this.tabPage_Control.Name = "tabPage_Control";
             this.tabPage_Control.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Control.Size = new System.Drawing.Size(821, 329);
+            this.tabPage_Control.Size = new System.Drawing.Size(851, 269);
             this.tabPage_Control.TabIndex = 1;
             this.tabPage_Control.Text = "Control";
             this.tabPage_Control.UseVisualStyleBackColor = true;
@@ -370,7 +370,7 @@
             // 
             this.lb_MaxCy.AutoSize = true;
             this.lb_MaxCy.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_MaxCy.Location = new System.Drawing.Point(586, 242);
+            this.lb_MaxCy.Location = new System.Drawing.Point(610, 205);
             this.lb_MaxCy.Name = "lb_MaxCy";
             this.lb_MaxCy.Size = new System.Drawing.Size(29, 32);
             this.lb_MaxCy.TabIndex = 7;
@@ -380,7 +380,7 @@
             // 
             this.lb_MinCy.AutoSize = true;
             this.lb_MinCy.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_MinCy.Location = new System.Drawing.Point(195, 242);
+            this.lb_MinCy.Location = new System.Drawing.Point(219, 205);
             this.lb_MinCy.Name = "lb_MinCy";
             this.lb_MinCy.Size = new System.Drawing.Size(29, 32);
             this.lb_MinCy.TabIndex = 6;
@@ -388,7 +388,7 @@
             // 
             // trackBar_Maximum
             // 
-            this.trackBar_Maximum.Location = new System.Drawing.Point(427, 194);
+            this.trackBar_Maximum.Location = new System.Drawing.Point(451, 157);
             this.trackBar_Maximum.Name = "trackBar_Maximum";
             this.trackBar_Maximum.Size = new System.Drawing.Size(343, 45);
             this.trackBar_Maximum.TabIndex = 5;
@@ -396,7 +396,7 @@
             // 
             // trackBar_Minimum
             // 
-            this.trackBar_Minimum.Location = new System.Drawing.Point(33, 194);
+            this.trackBar_Minimum.Location = new System.Drawing.Point(57, 157);
             this.trackBar_Minimum.Name = "trackBar_Minimum";
             this.trackBar_Minimum.Size = new System.Drawing.Size(343, 45);
             this.trackBar_Minimum.TabIndex = 4;
@@ -405,7 +405,7 @@
             // HeadValue
             // 
             this.HeadValue.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HeadValue.Location = new System.Drawing.Point(495, 35);
+            this.HeadValue.Location = new System.Drawing.Point(499, 36);
             this.HeadValue.Name = "HeadValue";
             this.HeadValue.Size = new System.Drawing.Size(120, 39);
             this.HeadValue.TabIndex = 3;
@@ -415,7 +415,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(482, 148);
+            this.label7.Location = new System.Drawing.Point(506, 111);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(239, 32);
             this.label7.TabIndex = 2;
@@ -425,7 +425,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(97, 148);
+            this.label6.Location = new System.Drawing.Point(121, 111);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(233, 32);
             this.label6.TabIndex = 1;
@@ -435,7 +435,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(195, 42);
+            this.label5.Location = new System.Drawing.Point(231, 43);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(262, 32);
             this.label5.TabIndex = 0;
@@ -447,7 +447,7 @@
             this.pn_STvaRP.Controls.Add(this.panel_Setting);
             this.pn_STvaRP.Location = new System.Drawing.Point(0, 31);
             this.pn_STvaRP.Name = "pn_STvaRP";
-            this.pn_STvaRP.Size = new System.Drawing.Size(1904, 329);
+            this.pn_STvaRP.Size = new System.Drawing.Size(1904, 308);
             this.pn_STvaRP.TabIndex = 2;
             // 
             // panel_Report
@@ -457,7 +457,7 @@
             this.panel_Report.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel_Report.Location = new System.Drawing.Point(862, 0);
             this.panel_Report.Name = "panel_Report";
-            this.panel_Report.Size = new System.Drawing.Size(1042, 329);
+            this.panel_Report.Size = new System.Drawing.Size(1042, 308);
             this.panel_Report.TabIndex = 3;
             // 
             // groupBox2
@@ -474,7 +474,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1040, 327);
+            this.groupBox2.Size = new System.Drawing.Size(1040, 306);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "REPORT";
@@ -483,7 +483,7 @@
             // 
             this.btn_ToRight.AutoSize = true;
             this.btn_ToRight.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ToRight.Location = new System.Drawing.Point(641, 274);
+            this.btn_ToRight.Location = new System.Drawing.Point(641, 262);
             this.btn_ToRight.Name = "btn_ToRight";
             this.btn_ToRight.Size = new System.Drawing.Size(220, 34);
             this.btn_ToRight.TabIndex = 7;
@@ -495,7 +495,7 @@
             // 
             this.btn_ToLeft.AutoSize = true;
             this.btn_ToLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ToLeft.Location = new System.Drawing.Point(180, 274);
+            this.btn_ToLeft.Location = new System.Drawing.Point(180, 262);
             this.btn_ToLeft.Name = "btn_ToLeft";
             this.btn_ToLeft.Size = new System.Drawing.Size(205, 34);
             this.btn_ToLeft.TabIndex = 6;
@@ -551,17 +551,17 @@
             // 
             // txt_SeekCnt
             // 
-            this.txt_SeekCnt.Location = new System.Drawing.Point(292, 215);
+            this.txt_SeekCnt.Location = new System.Drawing.Point(448, 204);
             this.txt_SeekCnt.Name = "txt_SeekCnt";
             this.txt_SeekCnt.ReadOnly = true;
-            this.txt_SeekCnt.Size = new System.Drawing.Size(628, 35);
+            this.txt_SeekCnt.Size = new System.Drawing.Size(316, 35);
             this.txt_SeekCnt.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(120, 217);
+            this.label3.Location = new System.Drawing.Point(276, 206);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(166, 32);
             this.label3.TabIndex = 0;
@@ -574,7 +574,7 @@
             this.panel_Setting.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Setting.Location = new System.Drawing.Point(0, 0);
             this.panel_Setting.Name = "panel_Setting";
-            this.panel_Setting.Size = new System.Drawing.Size(861, 329);
+            this.panel_Setting.Size = new System.Drawing.Size(861, 308);
             this.panel_Setting.TabIndex = 2;
             // 
             // panel_Graph
@@ -584,7 +584,7 @@
             this.panel_Graph.Location = new System.Drawing.Point(10, 38);
             this.panel_Graph.Margin = new System.Windows.Forms.Padding(0);
             this.panel_Graph.Name = "panel_Graph";
-            this.panel_Graph.Size = new System.Drawing.Size(1884, 632);
+            this.panel_Graph.Size = new System.Drawing.Size(1884, 658);
             this.panel_Graph.TabIndex = 3;
             this.panel_Graph.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Graph_Paint);
             this.panel_Graph.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Graph_MouseClick);
@@ -594,10 +594,10 @@
             this.groupBox1.Controls.Add(this.panel_Graph);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 361);
+            this.groupBox1.Location = new System.Drawing.Point(0, 335);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox1.Size = new System.Drawing.Size(1904, 680);
+            this.groupBox1.Size = new System.Drawing.Size(1904, 706);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "GRAPH";
@@ -632,9 +632,10 @@
             this.gb_alo.Controls.Add(this.btn_SSTF);
             this.gb_alo.Controls.Add(this.btn_cscan);
             this.gb_alo.Controls.Add(this.btn_Scan);
-            this.gb_alo.Location = new System.Drawing.Point(680, 39);
+            this.gb_alo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gb_alo.Location = new System.Drawing.Point(690, 3);
             this.gb_alo.Name = "gb_alo";
-            this.gb_alo.Size = new System.Drawing.Size(158, 240);
+            this.gb_alo.Size = new System.Drawing.Size(158, 263);
             this.gb_alo.TabIndex = 13;
             this.gb_alo.TabStop = false;
             this.gb_alo.Text = "Algorithm";
