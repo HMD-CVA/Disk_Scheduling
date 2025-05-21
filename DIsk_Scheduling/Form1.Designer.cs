@@ -83,6 +83,8 @@
             this.pn_Full = new System.Windows.Forms.Panel();
             this.pn_FullGraph = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnPause = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage_Setting.SuspendLayout();
@@ -491,6 +493,8 @@
             this.gb_Report.Controls.Add(this.btn_ToLeft);
             this.gb_Report.Controls.Add(this.btn_Exit);
             this.gb_Report.Controls.Add(this.btn_Reset);
+            this.gb_Report.Controls.Add(this.btnPause);
+            this.gb_Report.Controls.Add(this.btnUndo);
             this.gb_Report.Controls.Add(this.btn_Start);
             this.gb_Report.Controls.Add(this.label4);
             this.gb_Report.Controls.Add(this.txt_SeekCnt);
@@ -534,7 +538,7 @@
             // 
             this.btn_Exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Exit.Location = new System.Drawing.Point(771, 116);
+            this.btn_Exit.Location = new System.Drawing.Point(805, 116);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(176, 67);
             this.btn_Exit.TabIndex = 5;
@@ -546,7 +550,7 @@
             // 
             this.btn_Reset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Reset.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Reset.Location = new System.Drawing.Point(93, 116);
+            this.btn_Reset.Location = new System.Drawing.Point(612, 116);
             this.btn_Reset.Name = "btn_Reset";
             this.btn_Reset.Size = new System.Drawing.Size(176, 67);
             this.btn_Reset.TabIndex = 4;
@@ -558,7 +562,7 @@
             // 
             this.btn_Start.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Start.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Start.Location = new System.Drawing.Point(432, 116);
+            this.btn_Start.Location = new System.Drawing.Point(31, 116);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(176, 67);
             this.btn_Start.TabIndex = 3;
@@ -684,6 +688,30 @@
             this.panel1.Size = new System.Drawing.Size(1904, 1041);
             this.panel1.TabIndex = 5;
             // 
+            // btnUndo
+            // 
+            this.btnUndo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUndo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUndo.Location = new System.Drawing.Point(226, 116);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(176, 67);
+            this.btnUndo.TabIndex = 3;
+            this.btnUndo.Text = "UNDO";
+            this.btnUndo.UseVisualStyleBackColor = true;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            // 
+            // btnPause
+            // 
+            this.btnPause.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPause.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPause.Location = new System.Drawing.Point(419, 116);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(176, 67);
+            this.btnPause.TabIndex = 3;
+            this.btnPause.Text = "PAUSE";
+            this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -782,6 +810,8 @@
         private System.Windows.Forms.Panel pn_Full;
         private System.Windows.Forms.Panel pn_FullGraph;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.Button btnUndo;
     }
 }
 

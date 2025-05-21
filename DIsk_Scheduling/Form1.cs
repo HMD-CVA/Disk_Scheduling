@@ -336,7 +336,9 @@ namespace DIsk_Scheduling
                     yPoints.Add(y);
                 }
 
-                int drawUntil = isAnimating ? Math.Min(currentStep, paintQueue.Count) : paintQueue.Count;
+                //int drawUntil = isAnimating ? Math.Min(currentStep, paintQueue.Count) : paintQueue.Count;
+                int drawUntil = Math.Min(currentStep, paintQueue.Count);
+
 
                 for (int i = 0; i < drawUntil; i++)
                 {
@@ -676,6 +678,23 @@ namespace DIsk_Scheduling
 
             // Cập nhật label hiển thị
             lb_MaxCy.Text = $"Max: {trackBar_Maximum.Value}";
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            isAnimating = !isAnimating;
+            btnPause.Text = isAnimating ? "PAUSE" : "RESUME";
+        }
+
+        private void btnUndo_Click(object sender, EventArgs e)
+        {
+            if(currentStep > 0)
+            {
+                currentStep--;
+                isAnimating = false;
+                panel_Graph.Invalidate(); // vẽ lại
+                btnPause.Text = "RESUME";
+            }
         }
     }
 }
